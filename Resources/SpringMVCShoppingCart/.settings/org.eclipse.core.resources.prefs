@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//src/main/java/btth2/springmvcshoppingcart/config/ApplicationContextConfig.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/config/WebMvcConfig.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/config/WebSecurityConfig.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/controller/AdminController.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/controller/MainController.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/dao/impl/OrderDAOImpl.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/dao/impl/ProductDAOImpl.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/model/OrderDetailInfo.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/model/OrderInfo.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/model/PaginationResult.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/model/ProductInfo.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/util/Utils.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/validator/CustomerInfoValidator.java=UTF-8
+encoding//src/main/java/btth2/springmvcshoppingcart/validator/ProductInfoValidator.java=UTF-8
