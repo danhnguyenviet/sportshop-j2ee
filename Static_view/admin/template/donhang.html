@@ -8,7 +8,7 @@
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="images/favicon.png">
 
-    <title>Dynamic Table</title>
+    <title>Quản lý đơn hàng</title>
 
     <!--Core CSS -->
     <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -244,8 +244,8 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Thông tin cá nhân</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Cài đặt</a></li>
+                <li><a href="chitiettaikhoan.html"><i class=" fa fa-suitcase"></i>Thông tin cá nhân</a></li>
+                <li><a href="taikhoan.html"><i class="fa fa-cog"></i> Cài đặt</a></li>
                 <li><a href="login.html"><i class="fa fa-key"></i> Đăng xuất</a></li>
             </ul>
         </li>
@@ -255,27 +255,25 @@
 </div>
 </header>
 <!--header end-->
+<!--sidebar start-->
 <aside>
     <div id="sidebar" class="nav-collapse">
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a href="index.html">
                         <i class="fa fa-dashboard"></i>
                         <span>Quản lý chung</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a class="active" href="javascript:;">
                         <i class="fa fa-laptop"></i>
                         <span>Đơn hàng</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="boxed_page.html">Danh sách đơn hàng</a></li>
-                        <li><a href="horizontal_menu.html">Đơn hàng nháp</a></li>
-                        <li><a href="language_switch.html">Vận chuyển</a></li>
-                        <li><a href="language_switch.html">Chưa hoàn tất</a></li>
+                        <li class="active"><a href="donhang.html">Danh sách đơn hàng</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -284,9 +282,8 @@
                         <span>Sản phẩm</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="general.html">Danh sách sản phẩm</a></li>
-                        <li><a href="buttons.html">Nhóm sản phẩm</a></li>
-                        <li><a href="typography.html">Tồn kho</a></li>
+                        <li><a href="sanpham.html">Danh sách sản phẩm</a></li>
+                        <li><a href="themmoisanpham.html">Thêm mới sản phẩm</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -295,8 +292,8 @@
                         <span>Bài viết</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="basic_table.html">Danh sách bài viết</a></li>
-                        <li><a href="responsive_table.html">Thêm bài viết</a></li>
+                        <li><a href="baiviet.html">Danh sách bài viết</a></li>
+                        <li><a href="themmoibaiviet.html">Thêm bài viết</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -305,8 +302,7 @@
                         <span>Liên hệ </span>
                     </a>
                     <ul class="sub">
-                        <li><a href="mail.html">Danh sách liên hệ</a></li>
-                        <li><a href="mail_compose.html">Thêm liên hệ</a></li>
+                        <li><a href="lienhe.html">Danh sách liên hệ</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -315,8 +311,8 @@
                         <span>Người dùng</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="morris.html">Danh sách người dùng</a></li>
-                        <li><a href="chartjs.html">Thêm người dùng</a></li>
+                        <li><a href="taikhoan.html">Danh sách người dùng</a></li>
+                        <li><a href="taikhoan.html">Thêm người dùng</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -325,11 +321,9 @@
                         <span>Cấu hình</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="blank.html">Cấu hình chung</a></li>
-                        <li><a href="lock_screen.html">Địa chỉ</a></li>
-                        <li><a href="profile.html">Thông báo</a></li>
-                        <li><a href="invoice.html">Tài khoản</a></li>
-                        <li><a href="pricing_table.html">Website</a></li>
+                        <li><a href="cauhinhchung.html">Cấu hình chung</a></li>
+                        <li><a href="cauhinhchung.html">Thay đổi địa chỉ</a></li>
+                        <li><a href="taikhoan.html">Tài khoản</a></li>
                     </ul>
                 </li>
                 <li>
@@ -839,89 +833,253 @@
     <!--main content end-->
 <!--right sidebar start-->
 <div class="right-sidebar">
-<div class="search-row">
-    <input type="text" placeholder="Tìm kiếm" class="form-control">
-</div>
-<div class="right-stat-bar">
-<ul class="right-side-accordion">
-<li class="widget-collapsible">
-    <a href="#" class="head widget-head red-bg active clearfix">
-        <span class="pull-left">work progress (5)</span>
-        <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
-    </a>
-    <ul class="widget-container">
-        <li>
-            <div class="prog-row side-mini-stat clearfix">
-                <div class="side-graph-info">
-                    <h4>Target sell</h4>
-                    <p>
-                        25%, Deadline 12 june 13
-                    </p>
-                </div>
-                <div class="side-mini-graph">
-                    <div class="target-sell">
-                    </div>
-                </div>
-            </div>
-            <div class="prog-row side-mini-stat">
-                <div class="side-graph-info">
-                    <h4>product delivery</h4>
-                    <p>
-                        55%, Deadline 12 june 13
-                    </p>
-                </div>
-                <div class="side-mini-graph">
-                    <div class="p-delivery">
-                        <div class="sparkline" data-type="bar" data-resize="true" data-height="30" data-width="90%" data-bar-color="#39b7ab" data-bar-width="5" data-data="[200,135,667,333,526,996,564,123,890,564,455]">
+    <div class="search-row">
+        <input type="text" placeholder="Search" class="form-control">
+    </div>
+    <div class="right-stat-bar">
+        <ul class="right-side-accordion">
+            <li class="widget-collapsible">
+                <a href="#" class="head widget-head red-bg active clearfix">
+                    <span class="pull-left">work progress (5)</span>
+                    <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+                </a>
+                <ul class="widget-container">
+                    <li>
+                        <div class="prog-row side-mini-stat clearfix">
+                            <div class="side-graph-info">
+                                <h4>Target sell</h4>
+                                <p>
+                                    25%, Deadline 12 june 13
+                                </p>
+                            </div>
+                            <div class="side-mini-graph">
+                                <div class="target-sell">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="prog-row side-mini-stat">
-                <div class="side-graph-info payment-info">
-                    <h4>payment collection</h4>
-                    <p>
-                        25%, Deadline 12 june 13
-                    </p>
-                </div>
-                <div class="side-mini-graph">
-                    <div class="p-collection">
-						<span class="pc-epie-chart" data-percent="45">
-						<span class="percent"></span>
-						</span>
-                    </div>
-                </div>
-            </div>
-            <div class="prog-row side-mini-stat">
-                <div class="side-graph-info">
-                    <h4>delivery pending</h4>
-                    <p>
-                        44%, Deadline 12 june 13
-                    </p>
-                </div>
-                <div class="side-mini-graph">
-                    <div class="d-pending">
-                    </div>
-                </div>
-            </div>
-            <div class="prog-row side-mini-stat">
-                <div class="col-md-12">
-                    <h4>total progress</h4>
-                    <p>
-                        50%, Deadline 12 june 13
-                    </p>
-                    <div class="progress progress-xs mtop10">
-                        <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-info">
-                            <span class="sr-only">50% Complete</span>
+                        <div class="prog-row side-mini-stat">
+                            <div class="side-graph-info">
+                                <h4>product delivery</h4>
+                                <p>
+                                    55%, Deadline 12 june 13
+                                </p>
+                            </div>
+                            <div class="side-mini-graph">
+                                <div class="p-delivery">
+                                    <div class="sparkline" data-type="bar" data-resize="true" data-height="30" data-width="90%" data-bar-color="#39b7ab" data-bar-width="5" data-data="[200,135,667,333,526,996,564,123,890,564,455]">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-</li>
-</ul>
-</div>
+                        <div class="prog-row side-mini-stat">
+                            <div class="side-graph-info payment-info">
+                                <h4>payment collection</h4>
+                                <p>
+                                    25%, Deadline 12 june 13
+                                </p>
+                            </div>
+                            <div class="side-mini-graph">
+                                <div class="p-collection">
+                                    <span class="pc-epie-chart" data-percent="45">
+                        <span class="percent"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prog-row side-mini-stat">
+                            <div class="side-graph-info">
+                                <h4>delivery pending</h4>
+                                <p>
+                                    44%, Deadline 12 june 13
+                                </p>
+                            </div>
+                            <div class="side-mini-graph">
+                                <div class="d-pending">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prog-row side-mini-stat">
+                            <div class="col-md-12">
+                                <h4>total progress</h4>
+                                <p>
+                                    50%, Deadline 12 june 13
+                                </p>
+                                <div class="progress progress-xs mtop10">
+                                    <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-info">
+                                        <span class="sr-only">50% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="widget-collapsible">
+                <a href="#" class="head widget-head terques-bg active clearfix">
+                    <span class="pull-left">contact online (5)</span>
+                    <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+                </a>
+                <ul class="widget-container">
+                    <li>
+                        <div class="prog-row">
+                            <div class="user-thumb">
+                                <a href="#"><img src="images/avatar1_small.jpg" alt=""></a>
+                            </div>
+                            <div class="user-details">
+                                <h4><a href="#">Jonathan Smith</a></h4>
+                                <p>
+                                    Work for fun
+                                </p>
+                            </div>
+                            <div class="user-status text-danger">
+                                <i class="fa fa-comments-o"></i>
+                            </div>
+                        </div>
+                        <div class="prog-row">
+                            <div class="user-thumb">
+                                <a href="#"><img src="images/avatar1.jpg" alt=""></a>
+                            </div>
+                            <div class="user-details">
+                                <h4><a href="#">Anjelina Joe</a></h4>
+                                <p>
+                                    Available
+                                </p>
+                            </div>
+                            <div class="user-status text-success">
+                                <i class="fa fa-comments-o"></i>
+                            </div>
+                        </div>
+                        <div class="prog-row">
+                            <div class="user-thumb">
+                                <a href="#"><img src="images/chat-avatar2.jpg" alt=""></a>
+                            </div>
+                            <div class="user-details">
+                                <h4><a href="#">John Doe</a></h4>
+                                <p>
+                                    Away from Desk
+                                </p>
+                            </div>
+                            <div class="user-status text-warning">
+                                <i class="fa fa-comments-o"></i>
+                            </div>
+                        </div>
+                        <div class="prog-row">
+                            <div class="user-thumb">
+                                <a href="#"><img src="images/avatar1_small.jpg" alt=""></a>
+                            </div>
+                            <div class="user-details">
+                                <h4><a href="#">Mark Henry</a></h4>
+                                <p>
+                                    working
+                                </p>
+                            </div>
+                            <div class="user-status text-info">
+                                <i class="fa fa-comments-o"></i>
+                            </div>
+                        </div>
+                        <div class="prog-row">
+                            <div class="user-thumb">
+                                <a href="#"><img src="images/avatar1.jpg" alt=""></a>
+                            </div>
+                            <div class="user-details">
+                                <h4><a href="#">Shila Jones</a></h4>
+                                <p>
+                                    Work for fun
+                                </p>
+                            </div>
+                            <div class="user-status text-danger">
+                                <i class="fa fa-comments-o"></i>
+                            </div>
+                        </div>
+                        <p class="text-center">
+                            <a href="#" class="view-btn">View all Contacts</a>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li class="widget-collapsible">
+                <a href="#" class="head widget-head purple-bg active">
+                    <span class="pull-left"> recent activity (3)</span>
+                    <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+                </a>
+                <ul class="widget-container">
+                    <li>
+                        <div class="prog-row">
+                            <div class="user-thumb rsn-activity">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <div class="rsn-details ">
+                                <p class="text-muted">
+                                    just now
+                                </p>
+                                <p>
+                                    <a href="#">Jim Doe </a>Purchased new equipments for zonal office setup
+                                </p>
+                            </div>
+                        </div>
+                        <div class="prog-row">
+                            <div class="user-thumb rsn-activity">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <div class="rsn-details ">
+                                <p class="text-muted">
+                                    2 min ago
+                                </p>
+                                <p>
+                                    <a href="#">Jane Doe </a>Purchased new equipments for zonal office setup
+                                </p>
+                            </div>
+                        </div>
+                        <div class="prog-row">
+                            <div class="user-thumb rsn-activity">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <div class="rsn-details ">
+                                <p class="text-muted">
+                                    1 day ago
+                                </p>
+                                <p>
+                                    <a href="#">Jim Doe </a>Purchased new equipments for zonal office setup
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="widget-collapsible">
+                <a href="#" class="head widget-head yellow-bg active">
+                    <span class="pull-left"> shipment status</span>
+                    <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+                </a>
+                <ul class="widget-container">
+                    <li>
+                        <div class="col-md-12">
+                            <div class="prog-row">
+                                <p>
+                                    Full sleeve baby wear (SL: 17665)
+                                </p>
+                                <div class="progress progress-xs mtop10">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                        <span class="sr-only">40% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prog-row">
+                                <p>
+                                    Full sleeve baby wear (SL: 17665)
+                                </p>
+                                <div class="progress progress-xs mtop10">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                        <span class="sr-only">70% Completed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>
 <!--right sidebar end-->
 
