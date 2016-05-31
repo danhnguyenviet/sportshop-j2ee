@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id_parent` int(11) NULL,
   `level` int(11) NOT NULL,
   `is_active` int(11) NOT NULL,
-  `date` int(11) NOT NULL,
+  `date_create` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `detail` text COLLATE utf8_unicode_ci NOT NULL,
   `is_active` int(11) NOT NULL,
-  `date` datetime COLLATE utf8_unicode_ci NOT NULL,
+  `date_create` datetime COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `quantity` double DEFAULT NULL,
   `date_create` datetime NOT NULL,
-  `time_update` datetime NOT NULL,
+  `date_update` datetime NOT NULL,
   `is_active` int(11) NOT NULL,
   `is_savedraft` int(11) DEFAULT NULL,
   `views` int(11) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `ship_name` text COLLATE utf8_unicode_ci NOT NULL,
   `ship_phone` text COLLATE utf8_unicode_ci NOT NULL,
   `date_create` datetime NOT NULL,
-  `time_delivery` datetime NOT NULL,
+  `date_delivery` datetime NOT NULL,
   `note` text COLLATE utf8_unicode_ci NOT NULL,
   `total_amount` double NOT NULL,
   `total_amount_real` double NOT NULL,
