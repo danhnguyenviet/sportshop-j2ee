@@ -28,6 +28,8 @@ import j2ee.group01.sportshop.dao.UserDAO;
 import j2ee.group01.sportshop.entity.Category;
 import j2ee.group01.sportshop.entity.Product;
 import j2ee.group01.sportshop.entity.User;
+import j2ee.group01.sportshop.model.CategoryModel;
+import j2ee.group01.sportshop.model.ProductModel;
  
 @Controller
 // Enable Hibernate Transaction.
@@ -52,22 +54,40 @@ public class FrontendController {
     @RequestMapping(value = { "/view/home" }, method = RequestMethod.GET)
     public String hello(Model model) {
     	
-    	/*List<Product> mostList = new ArrayList<Product>();
+    	List<ProductModel> mostList = new ArrayList<ProductModel>();
     	mostList = productDAO.getMostPurchaseProduct(10);
     	
-    	List<Product> viewsList = new ArrayList<Product>();
-    	viewsList = productDAO.getFeaturedProduct(10);*/
+    	List<ProductModel> viewsList = new ArrayList<ProductModel>();
+    	viewsList = productDAO.getFeaturedProduct(10);
     	
-    	List<Product> newsestList = new ArrayList<Product>();
+    	List<ProductModel> newsestList = new ArrayList<ProductModel>();
     	newsestList = productDAO.getNewestProduct(10);
     	
-    	/*List<Category> categoryList = new ArrayList<Category>();
-    	categoryList = categoryDAO.getAllCategory(10);*/
+    	List<CategoryModel> categoryList = new ArrayList<CategoryModel>();
+    	CategoryModel category1 = new CategoryModel();
+    	category1.setId(1);
+    	category1.setTitle("Title 01");
+    	categoryList.add(category1);
+    	 category1 = new CategoryModel();
+    	category1.setId(1);
+    	category1.setTitle("Title 02");
+    	categoryList.add(category1);
+    	 category1 = new CategoryModel();
+    	category1.setId(1);
+    	category1.setTitle("Title 03");
+    	categoryList.add(category1);
+    	 category1 = new CategoryModel();
+    	category1.setId(1);
+    	category1.setTitle("Title 04");
+    	categoryList.add(category1);
     	
-    	//model.addAttribute("mostList", mostList);
-    	//model.addAttribute("viewsList", viewsList);
-    	model.addAttribute("newsestList", newsestList);
-    	//model.addAttribute("categoryList", categoryList);
+    	model.addAttribute("middleBannerImg", "cache/catalog/demo/banners/5-1170x124.png");
+    	model.addAttribute("LeftBannerImg", "cache/catalog/demo/banners/6-279x410.png");
+    	model.addAttribute("SlideShowProductList", mostList);
+    	model.addAttribute("MostPurchaseProductList", mostList);
+    	model.addAttribute("FeatureProductList", viewsList);
+    	model.addAttribute("NewestProductList", newsestList);
+    	model.addAttribute("CategoryList", categoryList);
         return "views/home";
     }
  

@@ -1,5 +1,6 @@
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\entity\OrderDetail.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\dao\CategoryDAO.java
+C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\model\ProductModel.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\dao\ProductDAO.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\config\SpringSecurityInitializer.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\entity\User.java
@@ -8,6 +9,7 @@ C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\config\ApplicationContextConfig.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\config\WebMvcConfig.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\entity\Order.java
+C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\model\CategoryModel.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\controller\BackendController.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\entity\Product.java
 C:\Users\Duy\Documents\J2EE\Project\sportshop-j2ee\Resources\SportShop\src\main\java\j2ee\group01\sportshop\dao\UserDAO.java

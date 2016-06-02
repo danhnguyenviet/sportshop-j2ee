@@ -1,6 +1,7 @@
 package j2ee.group01.sportshop.dao;
 // Generated Jun 1, 2016 9:27:59 AM by Hibernate Tools 4.3.1.Final
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import j2ee.group01.sportshop.entity.Product;
 import j2ee.group01.sportshop.entity.User;
+import j2ee.group01.sportshop.model.ProductModel;
 
 //Transactional for Hibernate
 @Transactional
@@ -27,24 +29,42 @@ public class ProductDAO {
 	 * */
 	
 	@SuppressWarnings("unchecked")
-	public List<Product> getMostPurchaseProduct(int max){
+	public List<ProductModel> getMostPurchaseProduct(int max){
 		
 		String sql = "select p from Product p order by p.purchase desc";
 		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(max);
-		return (List<Product>) criteria.list();
+		List<Product> allProduct = (List<Product>) criteria.list();
+		List<ProductModel> result = new ArrayList<ProductModel>();
+		for (Product product : allProduct) {
+			ProductModel item = new ProductModel(product);
+			result.add(item);
+		}
+		return result;
 	}
 	
-	public List<Product> getFeaturedProduct(int max){
+	public List<ProductModel> getFeaturedProduct(int max){
 		String sql = "select p from Product p order by p.views desc";
 		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(max);
-		return (List<Product>) criteria.list();
+		List<Product> allProduct = (List<Product>) criteria.list();
+		List<ProductModel> result = new ArrayList<ProductModel>();
+		for (Product product : allProduct) {
+			ProductModel item = new ProductModel(product);
+			result.add(item);
+		}
+		return result;
 	}
 	
 	
-	public List<Product> getNewestProduct(int max){
+	public List<ProductModel> getNewestProduct(int max){
 		String sql = "select p from Product p order by p.dateUpdate desc";
 		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(max);
-		return (List<Product>) criteria.list();
+		List<Product> allProduct = (List<Product>) criteria.list();
+		List<ProductModel> result = new ArrayList<ProductModel>();
+		for (Product product : allProduct) {
+			ProductModel item = new ProductModel(product);
+			result.add(item);
+		}
+		return result;
 	}
 	
 }
