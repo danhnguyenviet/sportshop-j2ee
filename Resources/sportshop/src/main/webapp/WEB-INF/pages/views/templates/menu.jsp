@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="j2ee.group01.sportshop.model.ProductModel"%>
+<%@ page import="j2ee.group01.sportshop.model.CategoryModel"%>
+<%@ page import="java.util.List"%>
 
 <div id="pav-mainnav">
     <div class="container">
@@ -19,92 +22,41 @@
                                         </a>
                                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                                             <ul class="nav navbar-nav megamenu">
-                                                <li class="home"><a href="index.html"><span class="menu-title">Trang chủ</span></a></li>
+                                                <li class="home"><a href="../view/home"><span class="menu-title">Trang chủ</span></a></li>
                                                 <li><a href="about.html"><span class="menu-title">Giới thiệu</span></a></li>
-                                                <li class=" aligned-left parent dropdown "><a href="category.html" class="dropdown-toggle" data-toggle="dropdown"><span class="menu-title">Sản phẩm</span><b class="caret"></b></a>
+                                                <li class=" aligned-left parent dropdown "><a href="../view/product" class="dropdown-toggle" data-toggle="dropdown"><span class="menu-title">Sản phẩm</span><b class="caret"></b></a>
                                                     <div class="dropdown-menu" style="width:700px">
                                                         <div class="dropdown-menu-inner">
                                                             <div class="row">
-                                                                <div class="mega-col col-xs-12 col-sm-12 col-md-3 ">
-                                                                    <div class="mega-col-inner">
-                                                                        <div class="pavo-widget" id="pavowid-50">
-                                                                            <div class="pavo-widget" id="pavowid-790836132">
-                                                                                <div class="widget-heading box-heading">Áo thể thao</div>
-                                                                                <div class="">
-                                                                                    <ul>
-                                                                                        <li><a href="category.html"><span class="title">Áo câu lạc bộ</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Áo đội tuyển</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Áo tay dài</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Áo khoác</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Áo nữ</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Khác</span></a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="mega-col col-xs-12 col-sm-12 col-md-3 ">
-                                                                    <div class="mega-col-inner">
-                                                                        <div class="pavo-widget" id="pavowid-50">
-                                                                            <div class="pavo-widget" id="pavowid-790836132">
-                                                                                <div class="widget-heading box-heading">Giày thể thao</div>
-
-                                                                                <div class="">
-                                                                                    <ul>
-                                                                                        <li><a href="category.html"><span class="title">Giày bóng đá</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Giày quần vợt</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Giày Nike</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Giày nam</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Giày nữ</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Khác</span></a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="mega-col col-xs-12 col-sm-12 col-md-3 ">
-                                                                    <div class="mega-col-inner">
-                                                                        <div class="pavo-widget" id="pavowid-50">
-                                                                            <div class="pavo-widget" id="pavowid-790836132">
-                                                                                <div class="widget-heading box-heading">Dụng cụ thể thao</div>
-
-                                                                                <div class="">
-                                                                                    <ul>
-                                                                                        <li><a href="category.html"><span class="title">Bóng đá</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Bóng rổ</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Bóng ném</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Tạ tay</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Vợt</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Khác</span></a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="mega-col col-xs-12 col-sm-12 col-md-3 ">
-                                                                    <div class="mega-col-inner">
-                                                                        <div class="pavo-widget" id="pavowid-50">
-                                                                            <div class="pavo-widget" id="pavowid-790836132">
-                                                                                <div class="widget-heading box-heading">Sản phẩm mới</div>
-
-                                                                                <div class="">
-                                                                                    <ul>
-                                                                                        <li><a href="category.html"><span class="title">Máy chạy bộ</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Máy xong hơi</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Bộ tạ thể hình</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Bóng bàn</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Bóng chuyền</span></a></li>
-                                                                                        <li><a href="category.html"><span class="title">Khác</span></a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            	<% List<CategoryModel> CategoryMenuList = (List<CategoryModel>)request.getAttribute("CategoryList");%>
+                                                            	<% for(int i=0;i<CategoryMenuList.size();i++){ %>
+                                                            		<% if(CategoryMenuList.get(i).getIdParent() == null){ %>
+                                                            			<div class="mega-col col-xs-12 col-sm-12 col-md-3 ">
+		                                                                    <div class="mega-col-inner">
+		                                                                        <div class="pavo-widget" id="pavowid-50">
+		                                                                            <div class="pavo-widget" id="pavowid-790836132">
+		                                                                                <div class="widget-heading box-heading">
+		                                                                                	<a href="../views/category?id=<%=CategoryMenuList.get(i).getId()%>"> 
+		                                                                                		<span class="title"><%=CategoryMenuList.get(i).getTitle() %>
+		                                                                                		</span>
+		                                                                                	</a>
+		                                                                                </div>
+		                                                                                <div class="">
+		                                                                                    <ul>
+		                                                                                    	<% for(int j=0;j<CategoryMenuList.size();j++){ %>
+		                                                                                    		<% if(CategoryMenuList.get(j).getIdParent() == CategoryMenuList.get(i).getId()){ %>
+		                                                                                    			<li><a href="../views/category?id=<%=CategoryMenuList.get(j).getId()%>"><span class="title"><%=CategoryMenuList.get(j).getTitle() %></span></a></li>
+		                                                                                    		<% } %>
+		                                                                                    	<% } %>
+		                                                                                    </ul>
+		                                                                                </div>
+		                                                                            </div>
+		                                                                        </div>
+		                                                                    </div>
+		                                                                </div>
+                                                            		<% } %>
+                                                            	<% } %>
+                                                            	</div>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -118,73 +70,26 @@
                                                                             <div class="pavo-widget">
                                                                                 <div class="widget-product-list sidebar">
                                                                                     <div class="widget-inner">
-                                                                                        <div class="w-product clearfix col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                            <div class="product-block">
-                                                                                                <div class="image">
-                                                                                                    <a class="img" href="product.html"><img src="image/cache/catalog/demo/5-80x81.png" alt="Nulla vitae convallis" class="img-responsive" /></a>
-                                                                                                </div>
-
-                                                                                                <div class="product-meta">
-                                                                                                    <div class="left">
-                                                                                                        <div class="price">
-                                                                                                            <span class="special-price">250.000đ</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <h3 class="name"><a href="product.html">Giày đinh Nike</a></h3>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="w-product clearfix col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                            <div class="product-block">
-                                                                                                <div class="image">
-                                                                                                    <a class="img" href="product.html"><img src="image/cache/catalog/demo/9-80x81.png" alt="Nulla vitae convallis" class="img-responsive" /></a>
-                                                                                                </div>
-
-                                                                                                <div class="product-meta">
-                                                                                                    <div class="left">
-                                                                                                        <div class="price">
-                                                                                                            <span class="special-price">250.000đ</span>
-                                                                                                            <span class="price-old">300.000đ</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <h3 class="name"><a href="product.html">Giày thể thao thời trang</a></h3>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="w-product clearfix col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                            <div class="product-block">
-                                                                                                <div class="image">
-                                                                                                    <a class="img" href="product.html"><img src="image/cache/catalog/demo/3-80x81.png" alt="Nulla vitae convallis" class="img-responsive" /></a>
-                                                                                                </div>
-
-                                                                                                <div class="product-meta">
-                                                                                                    <div class="left">
-                                                                                                        <div class="price">
-                                                                                                            <span class="special-price">100.000đ</span>
-                                                                                                            <span class="price-old">130.000đ</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <h3 class="name"><a href="product.html">Nón len mùa đông</a></h3>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="w-product clearfix col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                            <div class="product-block">
-                                                                                                <div class="image">
-                                                                                                    <a class="img" href="product.html"><img src="image/cache/catalog/demo/10-80x81.png" alt="Nulla vitae convallis" class="img-responsive" /></a>
-                                                                                                </div>
-
-                                                                                                <div class="product-meta">
-                                                                                                    <div class="left">
-                                                                                                        <div class="price">
-                                                                                                            <span class="special-price">350.000đ</span>
-                                                                                                            <span class="price-old">400.000đ</span>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <h3 class="name"><a href="product.html">Áo khoác đội tuyển</a></h3>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                    	<% List<ProductModel> SaleList = (List<ProductModel>)request.getAttribute("SaleProductList"); %>
+                                                                                    	<% for(int i =0; i < SaleList.size();i++){ %>
+                                                                                    		<div class="w-product clearfix col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	                                                                                            <div class="product-block">
+	                                                                                                <div class="image">
+	                                                                                                    <a class="img" href="../view/product?id=<%=SaleList.get(i).getId() %>"><img width="50px" height="50px" src="../image/product/<%=SaleList.get(i).getImages().get(0) %>" alt="<%=SaleList.get(i).getTitle() %>" class="img-responsive" /></a>
+	                                                                                                </div>
+	
+	                                                                                                <div class="product-meta">
+	                                                                                                    <div class="left">
+	                                                                                                        <div class="price">
+	                                                                                                        	<span class="special-price"><%=SaleList.get(i).getPricePromotion()%>đ</span>
+                                                                                                                <span class="price-old"><%=SaleList.get(i).getPrice()%>đ</span>
+	                                                                                                        </div>
+	                                                                                                    </div>
+	                                                                                                    <h3 class="name"><a href="../view/product?id=<%=SaleList.get(i).getId() %>"><%=SaleList.get(i).getTitle() %></a></h3>
+	                                                                                                </div>
+	                                                                                            </div>
+	                                                                                        </div>
+                                                                                    	<% } %>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

@@ -128,4 +128,17 @@ public class ProductDAO {
 		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setParameter(0, id);
 		return (new ProductModel((Product)criteria.uniqueResult()));
 	}
+
+	public List<ProductModel> getSaleProduct(int max){
+		String sql = "select p from Product p where p.pricePromotion is not null order by p.dateUpdate desc";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(max);
+		List<Product> allProduct = (List<Product>) criteria.list();
+		List<ProductModel> result = new ArrayList<ProductModel>();
+		for (Product product : allProduct) {
+			ProductModel item = new ProductModel(product);
+			result.add(item);
+		}
+		return result;
+	}
+	
 }

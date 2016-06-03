@@ -21,6 +21,13 @@ public class UserDAO {
 	@Autowired
     private SessionFactory sessionFactory;
 	
+	public String getUserName(int id){
+		 Session session = sessionFactory.getCurrentSession();
+		 Query query = session.createQuery("select u.username from User u where id=?")
+				 .setParameter(0, id);
+	        return (String)query.uniqueResult();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUser(){
 		

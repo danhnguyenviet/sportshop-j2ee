@@ -29,8 +29,10 @@
                     </div>
                 </div>
 
+                <div id="topCartPanelToAjax">
+                	<%@ include file= "../templates/top-cart.jsp" %>
+                </div>
                 
-                <%@ include file= "../templates/top-cart.jsp" %>
                 
             </div>
         </div>
