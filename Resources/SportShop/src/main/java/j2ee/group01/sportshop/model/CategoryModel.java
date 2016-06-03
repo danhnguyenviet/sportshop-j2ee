@@ -2,6 +2,8 @@ package j2ee.group01.sportshop.model;
 
 import java.util.Date;
 
+import j2ee.group01.sportshop.entity.Category;
+
 public class CategoryModel {
 	private Integer id;
 	private String title;
@@ -10,6 +12,21 @@ public class CategoryModel {
 	private int isActive;
 	private Date dateCreate;
 	private String slug;
+	private String image;
+	public CategoryModel(){
+		
+	}
+	public CategoryModel(Category category){
+		this.id = category.getId();
+		this.dateCreate = category.getDateCreate();
+		this.description = category.getDescription();
+		this.idParent = category.getIdParent();
+		this.isActive = category.getIsActive();
+		this.slug = category.getSlug();
+		this.title = category.getTitle();
+		this.image = category.getImage();
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -51,5 +68,11 @@ public class CategoryModel {
 	}
 	public void setSlug(String slug) {
 		this.slug = slug;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

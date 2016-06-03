@@ -46,7 +46,6 @@ public class ProductModel {
 		this.quantity = fromProduct.getQuantity();
 		this.title = fromProduct.getTitle();
 		this.views = fromProduct.getViews();
-		System.out.println(fromProduct.getImages());
 		String[] allImg = fromProduct.getImages().split("-");
 		this.images = new ArrayList<String>();
 		for (int i=0;i< allImg.length;i++) {

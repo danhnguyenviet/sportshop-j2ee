@@ -67,4 +67,65 @@ public class ProductDAO {
 		return result;
 	}
 	
+	public List<ProductModel> getNewestProductFromCategory(int max, int categoryId){
+		String sql = "select p from Product p where p.idCategory=? order by p.dateUpdate desc";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setParameter(0, categoryId).setMaxResults(max);
+		List<Product> allProduct = (List<Product>) criteria.list();
+		List<ProductModel> result = new ArrayList<ProductModel>();
+		for (Product product : allProduct) {
+			ProductModel item = new ProductModel(product);
+			result.add(item);
+		}
+		return result;
+	}
+	
+	public List<ProductModel> getProductFromCategory(int categoryId, int sortMode, int indexPage, int itemPerPage){
+		
+		String sql = "select p from Product p where p.idCategory=?";
+		
+		switch(sortMode){
+		case 1:
+			sql += " order by p.title asc";
+			break;
+		case 2:
+			sql += " order by p.title desc";
+			break;
+		case 3:
+			sql += " order by p.price asc";
+			break;
+		case 4:
+			sql += " order by p.price desc";
+			break;
+		case 5:
+			sql += " order by p.purchase asc";
+			break;
+		case 6:
+			sql += " order by p.purchase desc";
+			break;
+			default:
+				break;
+		}
+		
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setParameter(0, categoryId);
+		criteria.setFirstResult((indexPage-1)*itemPerPage).setMaxResults(itemPerPage);
+		List<Product> allProduct = (List<Product>) criteria.list();
+		List<ProductModel> result = new ArrayList<ProductModel>();
+		for (Product product : allProduct) {
+			ProductModel item = new ProductModel(product);
+			result.add(item);
+		}
+		return result;
+	}
+	
+	public int getCountByCategory(int categoryId){
+		String sql = "select count(p.id) from Product p where p.idCategory=?";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setParameter(0, categoryId);
+		return ((Long)criteria.uniqueResult()).intValue();
+	}
+	
+	public ProductModel getProduct(int id){
+		String sql = "select p from Product p where p.id=?";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setParameter(0, id);
+		return (new ProductModel((Product)criteria.uniqueResult()));
+	}
 }

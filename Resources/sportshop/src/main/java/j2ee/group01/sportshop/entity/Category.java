@@ -25,25 +25,29 @@ public class Category implements java.io.Serializable {
 	private int isActive;
 	private Date dateCreate;
 	private String slug;
+	private String image;
 
 	public Category() {
 	}
 
-	public Category(String title, String description, int isActive, Date dateCreate, String slug) {
+	public Category(String title, String description, int isActive, Date dateCreate, String slug, String img) {
 		this.title = title;
 		this.description = description;
 		this.isActive = isActive;
 		this.dateCreate = dateCreate;
 		this.slug = slug;
+		this.image = img;
 	}
 
-	public Category(String title, String description, Integer idParent, int isActive, Date dateCreate, String slug) {
+	public Category(String title, String description, Integer idParent, int isActive, Date dateCreate, String slug,
+			String img) {
 		this.title = title;
 		this.description = description;
 		this.idParent = idParent;
 		this.isActive = isActive;
 		this.dateCreate = dateCreate;
 		this.slug = slug;
+		this.image = img;
 	}
 
 	@Id
@@ -111,6 +115,15 @@ public class Category implements java.io.Serializable {
 
 	public void setSlug(String slug) {
 		this.slug = slug;
+	}
+	
+	@Column(name = "image", nullable = false, length = 65535)
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

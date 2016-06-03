@@ -40,6 +40,11 @@ import j2ee.group01.sportshop.model.ProductModel;
 @EnableWebMvc
 public class FrontendController {
  
+	private int itemPerPage = 12;
+	private int newestItem = 5;
+	private int maxCategorySelect = 20;
+	private int recommandProduct = 10;
+	
     @Autowired
     private UserDAO userDAO;
     
@@ -49,10 +54,10 @@ public class FrontendController {
     @Autowired
     private CategoryDAO categoryDAO;
  
-    // GET: Show Login Page
-    // GET: Hiển thị trang login
+    // GET: Show Home Page
+    // GET: Hiển thị trang chủ
     @RequestMapping(value = { "/view/home" }, method = RequestMethod.GET)
-    public String hello(Model model) {
+    public String home(Model model) {
     	
     	List<ProductModel> mostList = new ArrayList<ProductModel>();
     	mostList = productDAO.getMostPurchaseProduct(10);
@@ -81,9 +86,9 @@ public class FrontendController {
     	category1.setTitle("Title 04");
     	categoryList.add(category1);
     	
-    	model.addAttribute("middleBannerImg", "cache/catalog/demo/banners/5-1170x124.png");
-    	model.addAttribute("LeftBannerImg", "cache/catalog/demo/banners/6-279x410.png");
-    	model.addAttribute("SlideShowProductList", mostList);
+    	model.addAttribute("MiddleBannerImage", "5-1170x124.png");
+    	model.addAttribute("LeftBannerImage", "6-279x410.png");
+    	model.addAttribute("SlideShowProductList", mostList.subList(0, 5));
     	model.addAttribute("MostPurchaseProductList", mostList);
     	model.addAttribute("FeatureProductList", viewsList);
     	model.addAttribute("NewestProductList", newsestList);
@@ -91,4 +96,67 @@ public class FrontendController {
         return "views/home";
     }
  
+    // GET: Show Category Page
+    // GET: Hiển thị trang Loại sản phẩm
+    @RequestMapping(value = { "/view/category" }, method = RequestMethod.GET)
+    public String category(Model model,
+    		@RequestParam(value = "id") int categoryId,
+    		@RequestParam(value = "page", defaultValue="1") int indexPageLink,
+    		@RequestParam(value = "sort", defaultValue="0") int sortMode) {
+    	CategoryModel category = categoryDAO.getCategory(categoryId);
+    	if(category == null)
+    	{
+    		// error
+    	}
+    	
+    	List<ProductModel> productListResult = new ArrayList<ProductModel>();
+    	productListResult = productDAO.getProductFromCategory(category.getId(), sortMode, indexPageLink, itemPerPage);
+    	
+    	List<ProductModel> newsestList = new ArrayList<ProductModel>();
+    	newsestList = productDAO.getNewestProductFromCategory(newestItem, categoryId);
+    	
+    	List<CategoryModel> categoryList = new ArrayList<CategoryModel>();
+    	categoryList = categoryDAO.getAllCategory(maxCategorySelect);
+    	
+    	int countProduct = productDAO.getCountByCategory(categoryId);
+    	int countPage = (countProduct/itemPerPage)+1;
+    	model.addAttribute("LeftBannerImage", "6-279x410.png");
+    	model.addAttribute("CategoryInformation", category);
+    	model.addAttribute("ProductListResult", productListResult);
+    	model.addAttribute("NewsestProductList", newsestList);
+    	model.addAttribute("CategoryList", categoryList);
+    	model.addAttribute("CountPage", countPage);
+    	model.addAttribute("ItemPerPage", itemPerPage);
+    	model.addAttribute("PrevPage", ((indexPageLink -1) < 1)?1:(indexPageLink -1));
+    	model.addAttribute("NextPage", ((indexPageLink +1) > countPage)?(indexPageLink +1):countPage);
+    	model.addAttribute("SortMode", sortMode);
+    	model.addAttribute("CurrentPage", indexPageLink);
+    	model.addAttribute("CountProduct", countProduct);
+        return "views/category";
+    }
+    
+    // GET: Show Product detail Page
+    // GET: Hiển thị trang chi tiết sản phẩm
+    @RequestMapping(value = { "/view/product" }, method = RequestMethod.GET)
+    public String product(Model model,
+    		@RequestParam(value = "id") int productId) {
+    	ProductModel product = productDAO.getProduct(productId);
+    	if(product == null)
+    	{
+    		// error
+    	}
+    	
+    	List<ProductModel> productListResult = new ArrayList<ProductModel>();
+    	productListResult = productDAO.getNewestProductFromCategory(recommandProduct,product.getIdCategory());
+    	
+    	List<CategoryModel> categoryList = new ArrayList<CategoryModel>();
+    	categoryList = categoryDAO.getAllCategory(maxCategorySelect);
+    	
+    	model.addAttribute("ProductInformation", product);
+    	model.addAttribute("ProductListResult", productListResult);
+    	model.addAttribute("CategoryList", categoryList);
+        return "views/product";
+    }
+
+
 }
