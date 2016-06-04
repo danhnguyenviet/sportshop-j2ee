@@ -9,30 +9,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>News | Sportshop</title>
+<title>Tin tức | Sportshop</title>
+<%@ include file="../views/templates/head.jsp"%>
 
-	<link href="../image/catalog/cart.png" rel="icon" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/bootstrap.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/stylesheet.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/magnific/magnific-popup.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" />
-<link href="../catalog/view/theme/default/stylesheet/pavproducttabs.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/sliderlayer/css/typo.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavcarousel.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavreassurance.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavblog.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavnewsletter.css" rel="stylesheet" />
-<script type="text/javascript" src="../catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/theme/pav_sportshop/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.plugins.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/elevatezoom/elevatezoom-min.js"></script>
 </head>
 <body class="main-menu-fixed common-home page-common-home layout-fullwidth">
 	<div class="row-offcanvas row-offcanvas-left">
@@ -71,7 +50,7 @@
 	                                                    <div class="create-info">
 	                                                        <div class="blog-header">
 	                                                            <h4 class="blog-title">
-	                                                              <a href="blog_detail.html" title="${mostViewNews.title}">${mostViewNews.title}</a>
+	                                                              <a href="../view/read_news?id=${mostViewNews.id}" title="${mostViewNews.title}">${mostViewNews.title}</a>
 	                                                            </h4>
 	                                                        </div>
 	                                                        <div class="description">
@@ -104,7 +83,7 @@
                                     <div class="leading-blogs clearfix">
 		                                        <div class="pavcol1">
 		                                            <div class="blog-item box">
-		                                                <h2 class="blog-title box-heading ">  <a href="blog_detail.html" title="<%=NewsList.get(0).getTitle() %>"><%=NewsList.get(0).getTitle() %></a></h2>
+		                                                <h2 class="blog-title box-heading ">  <a href="../view/read_news?id=<%=NewsList.get(0).getId() %>" title="<%=NewsList.get(0).getTitle() %>"><%=NewsList.get(0).getTitle() %></a></h2>
 		                                                <div class="box-content">
 		                                                    <div class="blog-meta">
 		                                                        <ul>
@@ -124,7 +103,7 @@
 		                                                        <div class="description">
 		                                                        	<%=NewsList.get(0).getShortDetail() %>
 		                                                        </div>
-		                                                        <div class="blog-readmore"><a href="blog_detail.html" class="button btn btn-default">Xem thêm</a></div>
+		                                                        <div class="blog-readmore"><a href="../view/read_news?id=<%=NewsList.get(0).getId() %>" class="button btn btn-default">Xem thêm</a></div>
 		                                                    </div>
 		                                                </div>
 		                                            </div>
@@ -136,7 +115,7 @@
                                     <% for(int i = 1; i < NewsList.size(); i++){ %>
                                     	<div class="pavcol1">
 		                                            <div class="blog-item box">
-		                                                <h2 class="blog-title box-heading ">  <a href="blog_detail.html" title="<%=NewsList.get(i).getTitle() %>"><%=NewsList.get(i).getTitle() %></a></h2>
+		                                                <h2 class="blog-title box-heading ">  <a href="../view/read_news?id=<%=NewsList.get(i).getId() %>" title="<%=NewsList.get(i).getTitle() %>"><%=NewsList.get(i).getTitle() %></a></h2>
 		                                                <div class="box-content">
 		                                                    <div class="blog-meta">
 		                                                        <ul>
@@ -156,7 +135,7 @@
 		                                                        <div class="description">
 		                                                        	<%=NewsList.get(i).getShortDetail() %>
 		                                                        </div>
-		                                                        <div class="blog-readmore"><a href="blog_detail.html" class="button btn btn-default">Xem thêm</a></div>
+		                                                        <div class="blog-readmore"><a href="../view/read_news?id=<%=NewsList.get(i).getId() %>" class="button btn btn-default">Xem thêm</a></div>
 		                                                    </div>
 		                                                </div>
 		                                            </div>

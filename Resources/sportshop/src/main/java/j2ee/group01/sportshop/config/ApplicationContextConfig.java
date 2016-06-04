@@ -25,6 +25,7 @@ import j2ee.group01.sportshop.dao.NewsDAO;
 import j2ee.group01.sportshop.dao.OrderDAO;
 import j2ee.group01.sportshop.dao.OrderDetailDAO;
 import j2ee.group01.sportshop.dao.ProductDAO;
+import j2ee.group01.sportshop.dao.RequestContactDAO;
 import j2ee.group01.sportshop.dao.UserDAO;
  
 @Configuration
@@ -145,5 +146,10 @@ public class ApplicationContextConfig {
    public UserDAO getUserDAO() {
        return new UserDAO();
    }
+   @Bean(name = "requestContactDAO")
+   public RequestContactDAO getRequestContactDAO() {
+       return new RequestContactDAO();
+   }
  
+   
 }

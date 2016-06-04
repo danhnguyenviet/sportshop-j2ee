@@ -3,6 +3,21 @@
 <%@ page import="j2ee.group01.sportshop.model.CategoryModel"%>
 <%@ page import="java.util.List"%>
 
+<script type="text/javascript">
+
+	function goToSearchResultSport(){
+		var keyword = document.getElementById("txtSearchValueInput").value;
+		keyword = keyword.trim();
+		if(keyword.length < 1){
+			alert("Vui lòng nhập từ khóa tìm kiếm. Xin cám ơn!");
+			return;
+		}
+		window.location.href = "../view/search?id="+keyword;	
+	}
+
+</script>
+
+
 <div id="pav-mainnav">
     <div class="container">
         <div class="inner">
@@ -23,8 +38,8 @@
                                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                                             <ul class="nav navbar-nav megamenu">
                                                 <li class="home"><a href="../view/home"><span class="menu-title">Trang chủ</span></a></li>
-                                                <li><a href="about.html"><span class="menu-title">Giới thiệu</span></a></li>
-                                                <li class=" aligned-left parent dropdown "><a href="../view/product" class="dropdown-toggle" data-toggle="dropdown"><span class="menu-title">Sản phẩm</span><b class="caret"></b></a>
+                                                <li><a href="../view/about"><span class="menu-title">Giới thiệu</span></a></li>
+                                                <li class=" aligned-left parent dropdown "><a href="../view/category" class="dropdown-toggle" data-toggle="dropdown"><span class="menu-title">Sản phẩm</span><b class="caret"></b></a>
                                                     <div class="dropdown-menu" style="width:700px">
                                                         <div class="dropdown-menu-inner">
                                                             <div class="row">
@@ -36,7 +51,7 @@
 		                                                                        <div class="pavo-widget" id="pavowid-50">
 		                                                                            <div class="pavo-widget" id="pavowid-790836132">
 		                                                                                <div class="widget-heading box-heading">
-		                                                                                	<a href="../views/category?id=<%=CategoryMenuList.get(i).getId()%>"> 
+		                                                                                	<a href="../view/category?id=<%=CategoryMenuList.get(i).getId()%>"> 
 		                                                                                		<span class="title"><%=CategoryMenuList.get(i).getTitle() %>
 		                                                                                		</span>
 		                                                                                	</a>
@@ -45,7 +60,7 @@
 		                                                                                    <ul>
 		                                                                                    	<% for(int j=0;j<CategoryMenuList.size();j++){ %>
 		                                                                                    		<% if(CategoryMenuList.get(j).getIdParent() == CategoryMenuList.get(i).getId()){ %>
-		                                                                                    			<li><a href="../views/category?id=<%=CategoryMenuList.get(j).getId()%>"><span class="title"><%=CategoryMenuList.get(j).getTitle() %></span></a></li>
+		                                                                                    			<li><a href="../view/category?id=<%=CategoryMenuList.get(j).getId()%>"><span class="title"><%=CategoryMenuList.get(j).getTitle() %></span></a></li>
 		                                                                                    		<% } %>
 		                                                                                    	<% } %>
 		                                                                                    </ul>
@@ -60,7 +75,7 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class=" aligned-left parent dropdown "><a href="category.html" class="dropdown-toggle" data-toggle="dropdown"><span class="menu-title">Khuyến mãi</span><b class="caret"></b></a>
+                                                <li class=" aligned-left parent dropdown "><a href="../view/sale" class="dropdown-toggle" data-toggle="dropdown"><span class="menu-title">Khuyến mãi</span><b class="caret"></b></a>
                                                     <div class="dropdown-menu" style="width:350px">
                                                         <div class="dropdown-menu-inner">
                                                             <div class="row">
@@ -100,8 +115,8 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class=""><a href="blog.html"><span class="menu-title">Tin tức</span></a></li>
-                                                <li class=""><a href="contact.html"><span class="menu-title">Liên hệ</span></a></li>
+                                                <li class=""><a href="../view/news"><span class="menu-title">Tin tức</span></a></li>
+                                                <li class=""><a href="../view/contact"><span class="menu-title">Liên hệ</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -112,11 +127,11 @@
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-xs">
-                    <div id="search" class="search-box search-inline">
+                    <div  class="search-box search-inline">
                         <div class="input-group">
-                            <input type="text" name="search" placeholder="Tìm kiếm..." value="" class="input-search form-control" />
+                            <input id="txtSearchValueInput" type="text" name="search" placeholder="Tìm kiếm..." value="" class="input-search form-control" />
                             <span class="input-group-addon">       
-                               <button class="button-search fa fa-search" type="button"></button>
+                               <button class="button-search fa fa-search" type="button" onclick="goToSearchResultSport();"></button>
                             </span>
                         </div>
                     </div>

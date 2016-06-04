@@ -140,7 +140,7 @@ public class Order implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date_delivery", nullable = false, length = 19)
+	@Column(name = "date_delivery", nullable = true, length = 19)
 	public Date getDateDelivery() {
 		return this.dateDelivery;
 	}
@@ -149,7 +149,7 @@ public class Order implements java.io.Serializable {
 		this.dateDelivery = dateDelivery;
 	}
 
-	@Column(name = "note", nullable = false, length = 65535)
+	@Column(name = "note", nullable = true, length = 65535)
 	public String getNote() {
 		return this.note;
 	}

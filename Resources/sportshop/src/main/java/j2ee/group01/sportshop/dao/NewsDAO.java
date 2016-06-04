@@ -47,6 +47,12 @@ public class NewsDAO {
 		return (News)criteria.uniqueResult();
 	}
 	
+	public News getNewsDefault(){
+		String sql = "select n from News n order by n.dateUpdate desc";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(1);
+		return (News)criteria.uniqueResult();
+	}
+	
 	public int getNewsIdBefore(News currentNews){
 		String sql = "select n from News n where n.id < ? and n.id !=? order by n.dateUpdate desc";
 		Query criteria = sessionFactory.getCurrentSession().createQuery(sql);

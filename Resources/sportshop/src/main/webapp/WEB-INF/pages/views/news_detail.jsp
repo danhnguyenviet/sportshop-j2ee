@@ -9,30 +9,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>News detail | Sportshop</title>
+<title>${NewsInformation.title } | Sportshop</title>
+<%@ include file="../views/templates/head.jsp"%>
 
-	<link href="../image/catalog/cart.png" rel="icon" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/bootstrap.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/stylesheet.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/magnific/magnific-popup.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" />
-<link href="../catalog/view/theme/default/stylesheet/pavproducttabs.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/sliderlayer/css/typo.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavcarousel.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavreassurance.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavblog.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavnewsletter.css" rel="stylesheet" />
-<script type="text/javascript" src="../catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/theme/pav_sportshop/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.plugins.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/elevatezoom/elevatezoom-min.js"></script>
 </head>
 <body class="main-menu-fixed common-home page-common-home layout-fullwidth">
 	<div class="row-offcanvas row-offcanvas-left">
@@ -49,9 +28,9 @@
 			<div class="container">
 				<!-- Site map -->
 				<ul class="breadcrumb">
-                    <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-                    <li><a href="category.html">Áo thể thao</a></li>
-                    <li><a href="category.html">Áo thể thao 2</a></li>
+                    <li><a href="../view/home"><i class="fa fa-home"></i></a></li>
+                    <li><a href="../view/news">Tin Tức</a></li>
+                    <li><a href="../view/read_news?id=${NewsInformation.id }">${NewsInformation.title }</a></li>
              	</ul>
 				<!-- /Site map -->
                 <div class="row">
@@ -71,7 +50,7 @@
 	                                                    <div class="create-info">
 	                                                        <div class="blog-header">
 	                                                            <h4 class="blog-title">
-	                                                              <a href="blog_detail.html" title="${mostViewNews.title}">${mostViewNews.title}</a>
+	                                                              <a href="../view/read_news?id=${mostViewNews.id}" title="${mostViewNews.title}">${mostViewNews.title}</a>
 	                                                            </h4>
 	                                                        </div>
 	                                                        <div class="description">
@@ -127,13 +106,14 @@
                                     <div class="panel-body">
                                                		<div id="fb-root"></div>
 													<script>(function(d, s, id) {
+														$(".fb-comments").attr("data-href", window.location.href);
 													  var js, fjs = d.getElementsByTagName(s)[0];
 													  if (d.getElementById(id)) return;
 													  js = d.createElement(s); js.id = id;
 													  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
 													  fjs.parentNode.insertBefore(js, fjs);
 													}(document, 'script', 'facebook-jssdk'));</script>
-													<div class="fb-comments" data-href="window.location.href" data-numposts="5"></div>
+													<div class="fb-comments" data-href="" data-numposts="5"></div>
                                                	</div>
                                 </div>
                             </div>

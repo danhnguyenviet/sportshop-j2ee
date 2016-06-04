@@ -41,4 +41,20 @@ public class UserDAO {
 	        crit.add(Restrictions.eq("userName", userName));
 	        return (User) crit.uniqueResult();
 	}
+	
+	public void AddUser(String userName){
+		 Session session = sessionFactory.getCurrentSession();
+		 User us = new User();
+		 us.setEmail("aaa");
+		 us.setFullname("tao");
+		 us.setId(null);
+		 us.setIdRole(true);
+		 us.setIsActive(0);
+		 us.setPassword("aaa");
+		 us.setUsername(userName);
+		 
+		 long id = ((Integer)(session.save(us))).intValue();
+		 System.out.println("---------" + id);
+	}
+	
 }

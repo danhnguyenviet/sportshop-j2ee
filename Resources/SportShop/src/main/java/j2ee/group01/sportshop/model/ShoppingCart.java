@@ -36,6 +36,28 @@ public class ShoppingCart {
 		return allCart;
 	}
 
+	public void updateProductCart(Cart cart) {
+		int changeQuantity = 0;
+		boolean updated = false;
+		try{
+			for (Cart cart2 : allCart) {
+				if(cart2.getProduct().getId() == cart.getProduct().getId()){
+					changeQuantity = cart.getQuantity() - cart2.getQuantity();
+					cart2.setQuantity(cart.getQuantity());
+					updated = true;
+					break;
+				}
+			}
+		}catch(Exception ex){
+			
+		}
+		if(updated){
+			this.feePurchase += (changeQuantity*cart.getProduct().getPrice());
+			System.out.println("changeQuantity = "+changeQuantity);
+			System.out.println("cart.getProduct().getPrice() = "+cart.getProduct().getPrice());
+		}
+	}
+	
 	public void addProductCart(Cart cart) {
 		long cartFee = (long) (cart.getQuantity()*cart.getProduct().getPrice());
 		boolean added = false;

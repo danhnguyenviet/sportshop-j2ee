@@ -10,30 +10,29 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Product | Sportshop</title>
+<title>${ProductInformation.title } | Sportshop</title>
+<%@ include file="../views/templates/head.jsp"%>
 
-	<link href="../image/catalog/cart.png" rel="icon" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/bootstrap.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/stylesheet.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/magnific/magnific-popup.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" />
-<link href="../catalog/view/theme/default/stylesheet/pavproducttabs.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/sliderlayer/css/typo.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavcarousel.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavreassurance.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavblog.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavnewsletter.css" rel="stylesheet" />
-<script type="text/javascript" src="../catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/theme/pav_sportshop/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.plugins.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/elevatezoom/elevatezoom-min.js"></script>
+<script type="text/javascript">
+	function addCart(){
+		var rquantity = document.getElementById("input-quantity").value;
+		var producId = ${ProductInformation.id};
+		if(!parseInt(rquantity) || parseInt(rquantity) < 1){
+			document.getElementById('input-quantity').value = "1";
+			document.getElementById('input-quantity').focus();
+			alert("Số lượng tối thiểu là 1. Xin cám ơn!");
+			return;
+		}
+		$.post( "../view/addToCart", { id: producId, quantity: rquantity })
+		  .done(function( data ) {
+			  $('#topCartPanelToAjax').html(data+"");
+		  })
+		  .fail(function() {
+		    alert( "Đã xảy ra lỗi trong quá trình thêm vào giỏ hàng. Vui lòng thử lại." );
+		  });
+	}
+</script>
+
 </head>
 <body class="main-menu-fixed common-home page-common-home layout-fullwidth">
 	<div class="row-offcanvas row-offcanvas-left">
@@ -50,9 +49,9 @@
 			<div class="container">
 				<!-- Site map -->
 				<ul class="breadcrumb">
-                    <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-                    <li><a href="category.html">Áo thể thao</a></li>
-                    <li><a href="category.html">Áo thể thao 2</a></li>
+                    <li><a href="../view/home"><i class="fa fa-home"></i></a></li>
+                    <li><a href="../view/category?id=${CategoryInformation.id }">${CategoryInformation.title }</a></li>
+                    <li><a href="../view/product?id=${ProductInformation.id }">${ProductInformation.title }</a></li>
              	</ul>
 				<!-- /Site map -->
                 <div class="row">
@@ -64,7 +63,7 @@
                                     <ul class="box-category list-group accordion">
                                     	<c:forEach items="${CategoryList}" var="category">
                                     		<li class="list-group-item accordion-group">
-                                            	<a href="category.html">${category.title }</a>
+                                            	<a href="../view/category?id=${category.id }">${category.title }</a>
                                         	</li>
                                     	</c:forEach>
                                     </ul>
@@ -199,7 +198,7 @@
 
                                             <div class="btn-group-justified">
                                                 <div class="cart pull-left">
-                                                    <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-outline-inverse"><span class="fa fa-shopping-cart" onclick="window.location.href='cart.html'"></span>Thêm vào giỏ hàng</button>
+                                                    <button type="button" id="button-cart" data-loading-text="Loading..." class="btn btn-outline-inverse" onclick="addCart()"><span class="fa fa-shopping-cart" "></span>Thêm vào giỏ hàng</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -270,10 +269,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="image">
-                                                            <a class="img" href="product.html"><img src="../image/product/<%=RecommandList.get(i).getImages().get(0) %>" alt="<%=RecommandList.get(i).getTitle() %>" class="img-responsive" /></a>
+                                                            <a class="img" href="../view/product?id=<%=RecommandList.get(i).getId() %>"><img src="../image/product/<%=RecommandList.get(i).getImages().get(0) %>" alt="<%=RecommandList.get(i).getTitle() %>" class="img-responsive" /></a>
                                                             <a href="<%=RecommandList.get(i).getTitle() %>" class="btn btn-outline-inverse colorbox product-zoom cboxElement" title="<%=RecommandList.get(i).getTitle() %>"><i class="fa fa-search-plus"></i></a>
                                                             <div class="quickview">
-                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement " href="product.html" title="Xem nhanh"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
+                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement " href="../view/product?id=<%=RecommandList.get(i).getId() %>" title="Xem nhanh"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
                                                             </div>
                                                         </div>
 
@@ -297,20 +296,20 @@
                                                                     
                                                                 </div>
                                                             </div>
-                                                            <h3 class="name"><a href="product.html"><%=RecommandList.get(i).getTitle() %></a></h3>
+                                                            <h3 class="name"><a href="../view/product?id=<%=RecommandList.get(i).getId() %>"><%=RecommandList.get(i).getTitle() %></a></h3>
 
                                                             <div class="description"><p><%=RecommandList.get(i).getDescription() %></p></div>
 
                                                             <div class="right">
                                                                 <div class="action">
                                                                     <div class="cart">
-                                                                        <button onclick="window.location.href='cart.html'" class="btn btn-shopping-cart btn-outline-inverse">
+                                                                        <button onclick="window.location.href='../view/cart'" class="btn btn-shopping-cart btn-outline-inverse">
                                                                             <span class="fa fa-shopping-cart"></span>
                                                                             Mua ngay
                                                                         </button>
                                                                     </div>
                                                                     <div class="wishlist">
-                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="product.html">
+                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="../view/product?id=<%=RecommandList.get(i).getId() %>">
                                                                             <span>Chi tiết</span>
                                                                         </a>
                                                                     </div>
@@ -340,10 +339,10 @@
 		                                                            </div>
 		                                                        </div>
 		                                                        <div class="image">
-		                                                            <a class="img" href="product.html"><img src="../image/product/<%=RecommandList.get(j).getImages().get(0) %>" alt="<%=RecommandList.get(j).getTitle() %>" class="img-responsive" /></a>
+		                                                            <a class="img" href="../view/product?id=<%=RecommandList.get(j).getId() %>"><img src="../image/product/<%=RecommandList.get(j).getImages().get(0) %>" alt="<%=RecommandList.get(j).getTitle() %>" class="img-responsive" /></a>
 		                                                            <a href="<%=RecommandList.get(j).getTitle() %>" class="btn btn-outline-inverse colorbox product-zoom cboxElement" title="<%=RecommandList.get(j).getTitle() %>"><i class="fa fa-search-plus"></i></a>
 		                                                            <div class="quickview">
-		                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement " href="product.html" title="Xem nhanh"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
+		                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement " href="../view/product?id=<%=RecommandList.get(j).getId() %>" title="Xem nhanh"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
 		                                                            </div>
 		                                                        </div>
 		
@@ -367,20 +366,20 @@
 		                                                                    
 		                                                                </div>
 		                                                            </div>
-		                                                            <h3 class="name"><a href="product.html"><%=RecommandList.get(j).getTitle() %></a></h3>
+		                                                            <h3 class="name"><a href="../view/product?id=<%=RecommandList.get(j).getId() %>"><%=RecommandList.get(j).getTitle() %></a></h3>
 		
 		                                                            <div class="description"><p><%=RecommandList.get(j).getDescription() %></p></div>
 		
 		                                                            <div class="right">
 		                                                                <div class="action">
 		                                                                    <div class="cart">
-		                                                                        <button onclick="window.location.href='cart.html'" class="btn btn-shopping-cart btn-outline-inverse">
+		                                                                        <button onclick="window.location.href='../view/cart'" class="btn btn-shopping-cart btn-outline-inverse">
 		                                                                            <span class="fa fa-shopping-cart"></span>
 		                                                                            Mua ngay
 		                                                                        </button>
 		                                                                    </div>
 		                                                                    <div class="wishlist">
-		                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="product.html">
+		                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="../view/product?id=<%=RecommandList.get(j).getId() %>">
 		                                                                            <span>Chi tiết</span>
 		                                                                        </a>
 		                                                                    </div>
@@ -400,7 +399,7 @@
                     </section>
                	</div>
             </div>
-            <script type="text/javascript" src=" catalog/view/javascript/jquery/elevatezoom/elevatezoom-min.js"></script>
+            <script type="text/javascript" src="../catalog/view/javascript/jquery/elevatezoom/elevatezoom-min.js"></script>
             <script type="text/javascript">
             var zoomCollection = '#image';
             $(zoomCollection).elevateZoom({

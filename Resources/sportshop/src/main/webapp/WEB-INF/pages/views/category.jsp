@@ -10,30 +10,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Category | Sportshop</title>
-
-	<link href="../image/catalog/cart.png" rel="icon" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/bootstrap.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/stylesheet.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/magnific/magnific-popup.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" />
-<link href="../catalog/view/theme/default/stylesheet/pavproducttabs.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/sliderlayer/css/typo.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavcarousel.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavreassurance.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavblog.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavnewsletter.css" rel="stylesheet" />
-<script type="text/javascript" src="../catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/theme/pav_sportshop/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.plugins.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/elevatezoom/elevatezoom-min.js"></script>
+<title>${PageTitle} | Sportshop</title>
+<%@ include file="../views/templates/head.jsp" %>
+	
 </head>
 <body class="main-menu-fixed common-home page-common-home layout-fullwidth">
 	<div class="row-offcanvas row-offcanvas-left">
@@ -50,9 +29,8 @@
 			<div class="container">
 				<!-- Site map -->
 				<ul class="breadcrumb">
-                    <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-                    <li><a href="category.html">Áo thể thao</a></li>
-                    <li><a href="category.html">Áo thể thao 2</a></li>
+                    <li><a href="../view/home"><i class="fa fa-home"></i></a></li>
+                    <li><a href="${SiteMapUrl}">${SiteMapTitle}</a></li>
              	</ul>
 				<!-- /Site map -->
                 <div class="row">
@@ -64,7 +42,7 @@
                                     <ul class="box-category list-group accordion">
                                     	<c:forEach items="${CategoryList}" var="category">
                                     		<li class="list-group-item accordion-group">
-                                            	<a href="category.html">${category.title }</a>
+                                            	<a href="../view/category?id=${category.id }">${category.title }</a>
                                         	</li>
                                     	</c:forEach>
                                     </ul>
@@ -96,7 +74,7 @@
                                         	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 product-col">
 	                                            <div class="product-block">
 	                                                <div class="image">
-	                                                    <a class="img" href="product.html"><img src="../image/product/<%=NewestList.get(i).getImages().get(0) %>" alt="<%=NewestList.get(i).getTitle() %>" class="img-responsive" /></a>
+	                                                    <a class="img" href="../view/product?id=<%=NewestList.get(i).getId()%>"><img src="../image/product/<%=NewestList.get(i).getImages().get(0) %>" alt="<%=NewestList.get(i).getTitle() %>" class="img-responsive" /></a>
 	                                                </div>
 	
 	                                                <div class="product-meta">
@@ -112,7 +90,7 @@
 	                                                            </span>
 	                                                        </div>
 	                                                    </div>
-	                                                    <h3 class="name"><a href="product.html"><%=NewestList.get(i).getTitle() %></a></h3>
+	                                                    <h3 class="name"><a href="../view/product?id=<%=NewestList.get(i).getId()%>"><%=NewestList.get(i).getTitle() %></a></h3>
 	                                                </div>
 	                                            </div>
 	                                        </div>
@@ -133,13 +111,14 @@
 
                     <section id="sidebar-main" class="col-md-9">
                         <div id="content">
-                            <div class="category-info clearfix hidden-xs hidden-sm">
-                                <div class="image"><img src="../image/category/${CategoryInformation.image }" alt="Outerwear" class="img-responsive" /></div>
-                                <div class="category-description wrapper">
-                                    <div>${CategoryInformation.description }</div>
-                                </div>
-                            </div>
-
+                        	<c:if test="${not empty CategoryInfoImage }">
+                        		<div class="category-info clearfix hidden-xs hidden-sm">
+	                                <div class="image"><img src="../image/category/${CategoryInfoImage}" alt="" class="img-responsive" /></div>
+	                                <div class="category-description wrapper">
+	                                    <div>${CategoryInfoDescription }</div>
+	                                </div>
+	                            </div>
+                        	</c:if>
                         </div>
                         <div class="product-filter clearfix">
                             <div class="inner clearfix">
@@ -147,12 +126,19 @@
                                     <div class="btn-group group-switch">
                                         <button type="button" id="list-view" class="btn btn-switch" data-toggle="tooltip" title="Danh sách"></button>
                                         <button type="button" id="grid-view" class="btn btn-switch active" data-toggle="tooltip" title="Lưới"></button>
+                                        <span style="background:white;" class="btn btn-switch" data-toggle="tooltip" title="${MainTitle}">${MainTitle}</span>
                                     </div>
                                 </div>
                                 <div class="filter-right">
                                     <div class="sort pull-right">
+                                    	<script type="text/javascript">
+                                    		function changeSortMode(value){
+                                    			window.location.href = "${PageLinkUrl}?id=${PageId}&page=${CurrentPage}&sort="+value;
+                                    		}
+                                    	</script>
+                                    
                                         <span for="input-sort">Sắp xếp:</span>
-                                        <select id="input-sort" class="form-control" onchange="location = this.value;">
+                                        <select id="input-sort" class="form-control" onchange="changeSortMode(this.value);">
                                             <option value="0" selected="selected">Mặc định</option>
                                             <option value="1">Tên (A - Z)</option>
                                             <option value="2">Tên (Z - A)</option>
@@ -185,10 +171,10 @@
 													</div>
 	                                            </div>
 	                                            <div class="image">
-	                                                <a class="img" href="product.html"><img src="../image/product/<%=MainProductList.get(j).getImages().get(0) %>" alt="<%=MainProductList.get(j).getTitle() %>" class="img-responsive" /></a>
+	                                                <a class="img" href="../view/product?id=<%=MainProductList.get(j).getId()%>"><img src="../image/product/<%=MainProductList.get(j).getImages().get(0) %>" alt="<%=MainProductList.get(j).getTitle() %>" class="img-responsive" /></a>
 	                                                <a href="../image/product/<%=MainProductList.get(j).getImages().get(0) %>" class="btn btn-outline-inverse colorbox product-zoom cboxElement" title="<%=MainProductList.get(j).getTitle() %>"><i class="fa fa-search-plus"></i></a>
 	                                                <div class="quickview">
-	                                                    <a class="pav-colorbox btn btn-outline-inverse cboxElement " href="product.html" title="Xem nhanh"  data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
+	                                                    <a class="pav-colorbox btn btn-outline-inverse cboxElement " href="../view/product?id=<%=MainProductList.get(j).getId()%>" title="Xem nhanh"  data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
 	                                                </div>
 	                                            </div>
 	
@@ -212,20 +198,20 @@
 	                                                        
 	                                                    </div>
 	                                                </div>
-	                                                <h3 class="name"><a href="product.html"><%=MainProductList.get(j).getTitle() %></a></h3>
+	                                                <h3 class="name"><a href="../view/product?id=<%=MainProductList.get(j).getId()%>"><%=MainProductList.get(j).getTitle() %></a></h3>
 	
 	                                                <div class="description"><p><%=MainProductList.get(j).getDescription() %></p></div>
 	
 	                                                <div class="right">
 	                                                    <div class="action">
 	                                                        <div class="cart">
-	                                                            <button onclick="window.location.href='cart.html'" class="btn btn-shopping-cart btn-outline-inverse">
+	                                                            <button onclick="window.location.href='../view/cart'" class="btn btn-shopping-cart btn-outline-inverse">
 	                                    							<span class="fa fa-shopping-cart"></span>
 	                                    							Mua ngay
 	                                                            </button>
 	                                                        </div>
 	                                                        <div class="wishlist">
-	                                                            <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="product.html">
+	                                                            <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="../view/product?id=<%=MainProductList.get(j).getId()%>">
 	                                                                <span>Chi tiết</span>
 	                                                            </a>
 	                                                        </div>
@@ -243,24 +229,24 @@
                             <div class="pull-left">
                                 <ul class="pagination">
                                 	<% if(((Integer)request.getAttribute("CurrentPage")).intValue()<=1){ %>
-                                		<li class="disabled"><a href="category?id=${CategoryInformation.id }&page=${PrevPage }&sort=${SortMode}">&laquo;</a></li>
+                                		<li class="disabled"><a href="#">&laquo;</a></li>
                                 	<% }else{%>
-                                		<li><a href="category?id=${CategoryInformation.id }&page=${PrevPage }&sort=${SortMode}">&laquo;</a></li>
+                                		<li><a href="${PageLinkUrl}?id=${PageId}&page=${PrevPage}&sort=${SortMode}">&laquo;</a></li>
                                 	<% } %>
                                     
                                     <% for(int i=0;i < ((Integer)request.getAttribute("CountPage")).intValue();i++){ %>
                                     	<% if((i+1) == ((Integer)request.getAttribute("CurrentPage")).intValue()){ %>
-                                    		<li class="active"><a href="category?id=${CategoryInformation.id }&page=<%=i+1 %>&sort=${SortMode}"><%=i+1 %></a></li>
+                                    		<li class="active"><a href="${PageLinkUrl}?id=${PageId}&page=<%=i+1 %>&sort=${SortMode}"><%=i+1 %></a></li>
                                     	<% }else{ %>
-                                    		<li><a href="category?id=${CategoryInformation.id }&page=<%=i+1 %>&sort=${SortMode}"><%=i+1 %></a></li>
+                                    		<li><a href="${PageLinkUrl}?id=${PageId}&page=<%=i+1 %>&sort=${SortMode}"><%=i+1 %></a></li>
                                     	<% } %>
                                     <% } %>
                                     
                                     <% if(((Integer)request.getAttribute("CurrentPage")).intValue()>=
                                     	((Integer)request.getAttribute("CountPage")).intValue()){ %>
-                                    	<li class="disabled"><a href="category?id=${CategoryInformation.id }&page=${NextPage }&sort=${SortMode}">&raquo;</a></li>
+                                    	<li class="disabled"><a href="#">&raquo;</a></li>
                                 	<% }else{%>
-                                		<li><a href="category?id=${CategoryInformation.id }&page=${NextPage }&sort=${SortMode}">&raquo;</a></li>
+                                		<li><a href="${PageLinkUrl}?id=${PageId}&page=${NextPage}&sort=${SortMode}">&raquo;</a></li>
                                 	<% } %>
                                 </ul>
                             </div>

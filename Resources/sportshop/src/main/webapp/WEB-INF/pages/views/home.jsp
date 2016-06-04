@@ -3,6 +3,7 @@
 
 <%@ page import="j2ee.group01.sportshop.model.ProductModel"%>
 <%@ page import="j2ee.group01.sportshop.model.CategoryModel"%>
+<%@ page import="j2ee.group01.sportshop.model.ContractModel"%>
 <%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -11,29 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Trang chủ | Sportshop</title>
-
-	<link href="../image/catalog/cart.png" rel="icon" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/bootstrap.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/stylesheet.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/magnific/magnific-popup.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" rel="stylesheet" />
-<link href="../catalog/view/javascript/jquery/owl-carousel/owl.transitions.css" rel="stylesheet" />
-<link href="../catalog/view/theme/default/stylesheet/pavproducttabs.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/sliderlayer/css/typo.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavcarousel.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavreassurance.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavblog.css" rel="stylesheet" />
-<link href="../catalog/view/theme/pav_sportshop/stylesheet/pavnewsletter.css" rel="stylesheet" />
-<script type="text/javascript" src="../catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/theme/pav_sportshop/javascript/common.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.plugins.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/layerslider/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="../catalog/view/javascript/jquery/elevatezoom/elevatezoom-min.js"></script>
+<%@ include file="../views/templates/head.jsp" %>
 
 <script type="text/javascript">
 	function addCart(){
@@ -86,7 +65,7 @@
 	
 	                                                <!-- THE MAIN IMAGE IN THE SLIDE -->
 	                                                <div class="caption  randomrotate easeInOutBack easeInOutBack" data-x="80" data-y="315" data-speed="300" data-start="1200" data-easing="easeOutExpo">
-	                                                    <a href="product.html" class="btn btn-primary btn-lg">Xem chi tiêt</a>
+	                                                    <a href="../view/product?id=<%=SlideShowList.get(i).getId() %>" class="btn btn-primary btn-lg">Xem chi tiêt</a>
 	                                                </div>
 	                                            </li>
 											<% } %>
@@ -181,10 +160,10 @@
 	                                                                Mới </div>
 	                                                        </div>
 	                                                        <div class="image">
-	                                                            <a class="img" href="product.html"><img src="../image/product/<%=NewestList.get(i).getImages().get(0)%>" alt="<%=NewestList.get(i).getTitle()%>" class="img-responsive" /></a>
+	                                                            <a class="img" href="../view/product?id=<%=NewestList.get(i).getId()%>"><img src="../image/product/<%=NewestList.get(i).getImages().get(0)%>" alt="<%=NewestList.get(i).getTitle()%>" class="img-responsive" /></a>
 	                                                            <a href="../image/product/<%=NewestList.get(i).getImages().get(0)%>" class="btn btn-outline-inverse colorbox product-zoom cboxElement" title="<%=NewestList.get(i).getTitle()%>"><i class="fa fa-search-plus"></i></a>
 	                                                            <div class="quickview">
-	                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement" href="product.html" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
+	                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement" href="../view/product?id=<%=NewestList.get(i).getId() %>" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
 	                                                            </div>
 	                                                        </div>
 	
@@ -207,20 +186,20 @@
 		                                                                <% } %>
 	                                                                </div>
 	                                                            </div>
-	                                                            <h3 class="name"><a href="product.html"><%=NewestList.get(i).getTitle()%></a></h3>
+	                                                            <h3 class="name"><a href="../view/product?id=<%=NewestList.get(i).getId()%>"><%=NewestList.get(i).getTitle()%></a></h3>
 	
 	                                                            <div class="description"><p><%=NewestList.get(i).getDescription()%></p></div>
 	
 	                                                            <div class="right">
 	                                                                <div class="action">
 	                                                                    <div class="cart">
-	                                                                        <button onclick="window.location.href='cart.html'" class="btn btn-shopping-cart btn-outline-inverse">
+	                                                                        <button onclick="window.location.href='../view/cart'" class="btn btn-shopping-cart btn-outline-inverse">
 	                                                                            <span class="fa fa-shopping-cart"></span>
 	                                                                            Mua ngay
 	                                                                        </button>
 	                                                                    </div>
 	                                                                    <div class="wishlist">
-	                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="product.html">
+	                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="../view/product?id=<%=NewestList.get(i).getId()%>">
 	                                                                            <span>Chi tiết</span>
 	                                                                        </a>
 	                                                                    </div>
@@ -245,10 +224,10 @@
 	                                                                Mới </div>
 	                                                        </div>
 	                                                        <div class="image">
-	                                                            <a class="img" href="product.html"><img src="../image/product/<%=NewestList.get(j).getImages().get(0)%>" alt="<%=NewestList.get(j).getTitle()%>" class="img-responsive" /></a>
+	                                                            <a class="img" href="../view/product?id=<%=NewestList.get(j).getId()%>"><img src="../image/product/<%=NewestList.get(j).getImages().get(0)%>" alt="<%=NewestList.get(j).getTitle()%>" class="img-responsive" /></a>
 	                                                            <a href="../image/product/<%=NewestList.get(j).getImages().get(0)%>" class="btn btn-outline-inverse colorbox product-zoom cboxElement" title="<%=NewestList.get(j).getTitle()%>"><i class="fa fa-search-plus"></i></a>
 	                                                            <div class="quickview">
-	                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement" href="product.html" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
+	                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement" href="../view/product?id=<%=NewestList.get(j).getId()%>" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
 	                                                            </div>
 	                                                        </div>
 	
@@ -271,20 +250,20 @@
 		                                                                <% } %>
 	                                                                </div>
 	                                                            </div>
-	                                                            <h3 class="name"><a href="product.html"><%=NewestList.get(j).getTitle()%></a></h3>
+	                                                            <h3 class="name"><a href="../view/product?id=<%=NewestList.get(j).getId()%>"><%=NewestList.get(j).getTitle()%></a></h3>
 	
 	                                                            <div class="description"><p><%=NewestList.get(j).getDescription()%></p></div>
 	
 	                                                            <div class="right">
 	                                                                <div class="action">
 	                                                                    <div class="cart">
-	                                                                        <button onclick="window.location.href='cart.html'" class="btn btn-shopping-cart btn-outline-inverse">
+	                                                                        <button onclick="window.location.href='../view/cart'" class="btn btn-shopping-cart btn-outline-inverse">
 	                                                                            <span class="fa fa-shopping-cart"></span>
 	                                                                            Mua ngay
 	                                                                        </button>
 	                                                                    </div>
 	                                                                    <div class="wishlist">
-	                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="product.html">
+	                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="../view/product?id=<%=NewestList.get(j).getId()%>">
 	                                                                            <span>Chi tiết</span>
 	                                                                        </a>
 	                                                                    </div>
@@ -324,10 +303,10 @@
 	                                                                Hot </div>
 	                                                        </div>
 	                                                        <div class="image">
-	                                                            <a class="img" href="product.html"><img src="../image/product/<%=MostPurchaseList.get(i).getImages().get(0)%>" alt="<%=MostPurchaseList.get(i).getTitle()%>" class="img-responsive" /></a>
+	                                                            <a class="img" href="../view/product?id=<%=MostPurchaseList.get(i).getId()%>"><img src="../image/product/<%=MostPurchaseList.get(i).getImages().get(0)%>" alt="<%=MostPurchaseList.get(i).getTitle()%>" class="img-responsive" /></a>
 	                                                            <a href="../image/product/<%=MostPurchaseList.get(i).getImages().get(0)%>" class="btn btn-outline-inverse colorbox product-zoom cboxElement" title="<%=MostPurchaseList.get(i).getTitle()%>"><i class="fa fa-search-plus"></i></a>
 	                                                            <div class="quickview">
-	                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement" href="product.html" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
+	                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement" href="../view/product?id=<%=MostPurchaseList.get(i).getId()%>" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
 	                                                            </div>
 	                                                        </div>
 	
@@ -350,20 +329,20 @@
 		                                                                <% } %>
 	                                                                </div>
 	                                                            </div>
-	                                                            <h3 class="name"><a href="product.html"><%=MostPurchaseList.get(i).getTitle()%></a></h3>
+	                                                            <h3 class="name"><a href="../view/product?id=<%=MostPurchaseList.get(i).getId()%>"><%=MostPurchaseList.get(i).getTitle()%></a></h3>
 	
 	                                                            <div class="description"><p><%=MostPurchaseList.get(i).getDescription()%></p></div>
 	
 	                                                            <div class="right">
 	                                                                <div class="action">
 	                                                                    <div class="cart">
-	                                                                        <button onclick="window.location.href='cart.html'" class="btn btn-shopping-cart btn-outline-inverse">
+	                                                                        <button onclick="window.location.href='../view/cart'" class="btn btn-shopping-cart btn-outline-inverse">
 	                                                                            <span class="fa fa-shopping-cart"></span>
 	                                                                            Mua ngay
 	                                                                        </button>
 	                                                                    </div>
 	                                                                    <div class="wishlist">
-	                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="product.html">
+	                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="../view/product?id=<%=MostPurchaseList.get(i).getId()%>">
 	                                                                            <span>Chi tiết</span>
 	                                                                        </a>
 	                                                                    </div>
@@ -388,10 +367,10 @@
 	                                                                Hot </div>
 	                                                        </div>
 	                                                        <div class="image">
-	                                                            <a class="img" href="product.html"><img src="../image/product/<%=MostPurchaseList.get(j).getImages().get(0)%>" alt="<%=MostPurchaseList.get(j).getTitle()%>" class="img-responsive" /></a>
+	                                                            <a class="img" href="../view/product?id=<%=MostPurchaseList.get(j).getId()%>"><img src="../image/product/<%=MostPurchaseList.get(j).getImages().get(0)%>" alt="<%=MostPurchaseList.get(j).getTitle()%>" class="img-responsive" /></a>
 	                                                            <a href="../image/product/<%=MostPurchaseList.get(j).getImages().get(0)%>" class="btn btn-outline-inverse colorbox product-zoom cboxElement" title="<%=MostPurchaseList.get(j).getTitle()%>"><i class="fa fa-search-plus"></i></a>
 	                                                            <div class="quickview">
-	                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement" href="product.html" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
+	                                                                <a class="pav-colorbox btn btn-outline-inverse cboxElement" href="../view/product?id=<%=MostPurchaseList.get(j).getId()%>" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
 	                                                            </div>
 	                                                        </div>
 	
@@ -414,20 +393,20 @@
 		                                                                <% } %>
 	                                                                </div>
 	                                                            </div>
-	                                                            <h3 class="name"><a href="product.html"><%=MostPurchaseList.get(j).getTitle()%></a></h3>
+	                                                            <h3 class="name"><a href="../view/product?id=<%=MostPurchaseList.get(j).getId()%>"><%=MostPurchaseList.get(j).getTitle()%></a></h3>
 	
 	                                                            <div class="description"><p><%=MostPurchaseList.get(j).getDescription()%></p></div>
 	
 	                                                            <div class="right">
 	                                                                <div class="action">
 	                                                                    <div class="cart">
-	                                                                        <button onclick="window.location.href='cart.html'" class="btn btn-shopping-cart btn-outline-inverse">
+	                                                                        <button onclick="window.location.href='../view/cart'" class="btn btn-shopping-cart btn-outline-inverse">
 	                                                                            <span class="fa fa-shopping-cart"></span>
 	                                                                            Mua ngay
 	                                                                        </button>
 	                                                                    </div>
 	                                                                    <div class="wishlist">
-	                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="product.html">
+	                                                                        <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="../view/product?id=<%=MostPurchaseList.get(j).getId()%>">
 	                                                                            <span>Chi tiết</span>
 	                                                                        </a>
 	                                                                    </div>
@@ -492,7 +471,7 @@
                                     <ul class="box-category list-group accordion">
                                     	<c:forEach items="${CategoryList}" var="category">
                                     		<li class="list-group-item accordion-group">
-                                            	<a href="category.html">${category.title }</a>
+                                            	<a href="../view/category?id=${category.id }">${category.title }</a>
                                         	</li>
                                     	</c:forEach>
                                     </ul>
@@ -541,10 +520,10 @@
 		                                                        Xem Nhiều </div>
 		                                                </div>
 		                                                <div class="image">
-		                                                    <a class="img" href="product.html"><img src="../image/product/<%=FeatureList.get(j).getImages().get(0) %>" alt="<%=FeatureList.get(j).getTitle() %>" class="img-responsive" /></a>
+		                                                    <a class="img" href="../view/product?id=<%=FeatureList.get(j).getId()%>"><img src="../image/product/<%=FeatureList.get(j).getImages().get(0) %>" alt="<%=FeatureList.get(j).getTitle() %>" class="img-responsive" /></a>
 		                                                    <a href="../image/product/<%=FeatureList.get(j).getImages().get(0) %>" class="btn btn-outline-inverse colorbox product-zoom cboxElement" title="<%=FeatureList.get(j).getTitle() %>"><i class="fa fa-search-plus"></i></a>
 		                                                    <div class="quickview">
-		                                                        <a class="pav-colorbox btn btn-outline-inverse cboxElement " href="product.html" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
+		                                                        <a class="pav-colorbox btn btn-outline-inverse cboxElement " href="../view/product?id=<%=FeatureList.get(j).getId()%>" title="Xem nhanh" data-toggle="modal" data-target="#myModal"><em class="fa fa-eye"></em><span>Xem nhanh</span></a>
 		                                                    </div>
 		                                                </div>
 		
@@ -567,20 +546,20 @@
 			                                                        <% } %>
 		                                                        </div>
 		                                                    </div>
-		                                                    <h3 class="name"><a href="product.html"><%=FeatureList.get(j).getTitle() %></a></h3>
+		                                                    <h3 class="name"><a href="../view/product?id=<%=FeatureList.get(j).getId()%>"><%=FeatureList.get(j).getTitle() %></a></h3>
 		
 		                                                    <div class="description"><p><%=FeatureList.get(j).getDescription() %></p></div>
 		
 		                                                    <div class="right">
 		                                                        <div class="action">
 		                                                            <div class="cart">
-		                                                                <button onclick="window.location.href='cart.html'" class="btn btn-shopping-cart btn-outline-inverse">
+		                                                                <button onclick="window.location.href='../view/cart'" class="btn btn-shopping-cart btn-outline-inverse">
 		                                                                    <span class="fa fa-shopping-cart"></span>
 		                                                                    Mua ngay
 		                                                                </button>
 		                                                            </div>
 		                                                            <div class="wishlist">
-		                                                                <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="product.html">
+		                                                                <a data-toggle="tooltip" data-placement="top" title="Xem chi tiết" class="btn btn-outline" href="../view/product?id=<%=FeatureList.get(j).getId()%>">
 		                                                                    <span>Chi tiết</span>
 		                                                                </a>
 		                                                            </div>

@@ -36,7 +36,12 @@ public class CategoryDAO {
 		return result;
 	}
 	
-	@SuppressWarnings("unchecked")
+	public CategoryModel getCategoryDefault(){
+		String sql = "select c from Category c order by c.dateCreate desc, c.title desc";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(1);
+		return (new CategoryModel((Category)criteria.uniqueResult()));
+	}
+	
 	public CategoryModel getCategory(int id){
 		String sql = "select c from Category c where c.id = :id";
 		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setParameter("id", id);
