@@ -1,17 +1,50 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-	<jsp:directive.page contentType="text/html; charset=ISO-8859-1" 
-		pageEncoding="ISO-8859-1" session="false"/>
-	<jsp:output doctype-root-element="html"
-		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
-		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
-		omit-xml-declaration="true" />
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Insert title here</title>
-</head>
-<body>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%@ page import="j2ee.group01.sportshop.model.NewsModel"%>
+<%@ page import="java.util.List"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Giới Thiệu | Sportshop</title>
+<%@ include file="../views/templates/head.jsp"%>
+
+</head>
+<body class="main-menu-fixed common-home page-common-home layout-fullwidth">
+	<div class="row-offcanvas row-offcanvas-left">
+		<div id="page">
+			<!-- Header -->
+			<%@ include file="../views/templates/header.jsp"%>
+			<!-- /Header -->
+
+			<!-- Menu -->
+			<%@ include file="../views/templates/menu.jsp"%>
+			<!-- /Menu -->
+			
+			<!-- Content: left menu & suggest product list -->
+			<div class="container">
+				<!-- Site map -->
+				<ul class="breadcrumb">
+                    <li><a href="../view/home"><i class="fa fa-home"></i></a></li>
+                    <li><a href="../view/about">Về Chúng Tôi</a></li>
+               	</ul>
+				<!-- /Site map -->
+            	
+            	<!-- Content -->
+            	${AboutHtml }
+            	<!-- /Content -->
+            	    
+            </div>
+            <!-- /Content: left menu & suggest product list -->
+			
+			<!-- Footer -->
+			<%@ include file="../views/templates/footer.jsp"%>
+			<!-- /Footer -->
+			
+		</div>
+	</div>
 </body>
 </html>
-</jsp:root>

@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `is_active` int(11) NOT NULL,
   `date_create` datetime NOT NULL,
   `slug` text COLLATE utf8_unicode_ci NOT NULL,
+  `image` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 

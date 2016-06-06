@@ -17,16 +17,16 @@ public class OrderDetail implements java.io.Serializable {
 
 	private Integer id;
 	private int idOrder;
-	private String idProduct;
+	private int idProduct;
 	private int quantity;
 	private double price;
-	private double pricePromotion;
+	private Double pricePromotion;
 	private double total;
 
 	public OrderDetail() {
 	}
 
-	public OrderDetail(int idOrder, String idProduct, int quantity, double price, double pricePromotion, double total) {
+	public OrderDetail(int idOrder, int idProduct, int quantity, double price, double pricePromotion, double total) {
 		this.idOrder = idOrder;
 		this.idProduct = idProduct;
 		this.quantity = quantity;
@@ -56,12 +56,12 @@ public class OrderDetail implements java.io.Serializable {
 		this.idOrder = idOrder;
 	}
 
-	@Column(name = "id_product", nullable = false, length = 4)
-	public String getIdProduct() {
+	@Column(name = "id_product", nullable = false)
+	public int getIdProduct() {
 		return this.idProduct;
 	}
 
-	public void setIdProduct(String idProduct) {
+	public void setIdProduct(int idProduct) {
 		this.idProduct = idProduct;
 	}
 
@@ -83,12 +83,12 @@ public class OrderDetail implements java.io.Serializable {
 		this.price = price;
 	}
 
-	@Column(name = "price_promotion", nullable = false, precision = 22, scale = 0)
-	public double getPricePromotion() {
+	@Column(name = "price_promotion", nullable = true, precision = 22, scale = 0)
+	public Double getPricePromotion() {
 		return this.pricePromotion;
 	}
 
-	public void setPricePromotion(double pricePromotion) {
+	public void setPricePromotion(Double pricePromotion) {
 		this.pricePromotion = pricePromotion;
 	}
 

@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 logo inner">
                     <div id="logo-theme" class="logo-store pull-left">
-                        <a href="index.html" class="img-responsive"><span>SportShop</span></a>
+                        <a href="../view/home" class="img-responsive"><span>SportShop</span></a>
                     </div>
                 </div>
 
@@ -29,8 +29,10 @@
                     </div>
                 </div>
 
+                <div id="topCartPanelToAjax">
+                	<%@ include file= "../templates/top-cart.jsp" %>
+                </div>
                 
-                <%-- <%@ include file= "../cart/top-cart.jsp" %> --%>
                 
             </div>
         </div>
