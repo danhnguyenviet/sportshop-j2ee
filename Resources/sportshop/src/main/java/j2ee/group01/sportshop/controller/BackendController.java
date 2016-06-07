@@ -37,19 +37,17 @@ public class BackendController {
     @Autowired
     private UserDAO userDAO;
  
-    // GET: Show Login Page
-    // GET: Hiển thị trang login
-    @RequestMapping(value = { "/admin/helloX" }, method = RequestMethod.GET)
-    public String hello(Model model) {
-    	List<User> result = new  ArrayList<User>();
-    	result = userDAO.getAllUser();
-    	for (User user : result) {
-    		System.out.println(user.getUsername());
-		}
+    @RequestMapping(value = { "/admin/home" }, method = RequestMethod.GET)
+    public String home(Model model) {
     	
-    	model.addAttribute("listUser", result);
     	
-        return "admins/Sample01";
+        return "admin/home";
     }
- 
+
+    @RequestMapping(value = { "/admin/login" }, method = RequestMethod.GET)
+    public String login(Model model) {
+    	
+    	
+        return "admin/login";
+    }
 }

@@ -80,6 +80,7 @@ public class ApplicationContextConfig {
        dataSource.setUsername(env.getProperty("ds.username"));
        dataSource.setPassword(env.getProperty("ds.password"));
         
+       System.out.println("## getDataSource url: " + dataSource.getUrl());
        System.out.println("## getDataSource: " + dataSource);
         
        return dataSource;

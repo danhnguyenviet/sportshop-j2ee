@@ -152,7 +152,7 @@
                                         <!-- List active item -->
                                         <div class="item active">
                                             <div class="row products-row">
-                                            	<% for(int i=0;i < 4; i++){ %>
+                                            	<% for(int i=0;(i < 4 && i < NewestList.size()); i++){ %>
                                             		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 product-col">
 	                                                    <div class="product-block">
 	                                                        <div class="product-label">
@@ -295,7 +295,7 @@
                                         <!-- List active item -->
                                         <div class="item active">
                                             <div class="row products-row">
-                                            	<% for(int i=0;i < 4; i++){ %>
+                                            	<% for(int i=0;(i < 4 && i < MostPurchaseList.size()); i++){ %>
                                             		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 product-col">
 	                                                    <div class="product-block">
 	                                                        <div class="product-label">
