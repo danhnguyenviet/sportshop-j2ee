@@ -119,7 +119,7 @@ public class FrontendController {
     	newsestList = productDAO.getNewestProduct(recommandProduct);
     	// get list slide show from most purchase list
     	List<ProductModel> slideShow = new ArrayList<ProductModel>();
-    	slideShow = mostList.subList(0, newestItem);
+    	slideShow = mostList;//.//subList(0, newestItem);
     	// get banner infomation 
     	String leftBanner="";
     	String midBanner="";
