@@ -10,6 +10,26 @@
 	}
 %>
 
+<script type="text/javascript">
+	
+	function removeCart(productId) {
+		$.post("../view/deleteFromCart", {id : productId})
+		.done(function(data) {
+			var $response = $(data);
+			var topCart = $response.filter('#contentCartPanelMainTop').html();
+
+			$('#topCartPanelToAjax').html(topCart+"");
+		})
+		.fail(
+				function() {
+					/* var message = '<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Cảnh báo! </strong> Đã xảy ra lỗi trong quá trình xóa sản phẩm khỏi giỏ hàng. Vui lòng thử lại. </div>';
+					$('#InformContentCartPage').append(message); */
+				});
+	};
+	
+</script>
+
+
 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 shopping-cart inner ">
     <div class="cart-top">
         <div id="cart" class="clearfix">
@@ -24,13 +44,13 @@
                         	<% for(int i=0; i < CartList.size(); i++){ %>
                         		<tr>
 	                                <td class="text-left">
-	                                    <a href="product.html"><img width="50px" height="50px" src="../image/product/<%=CartList.get(i).getProduct().getImage() %>" alt="Double layer super soft" title="<%=CartList.get(i).getProduct().getTitle() %>" class="img-thumbnail" /></a>
+	                                    <a href="../view/product?id=<%=CartList.get(i).getProduct().getId()%>"><img width="50px" height="50px" src="../image/product/<%=CartList.get(i).getProduct().getImage() %>" alt="Double layer super soft" title="<%=CartList.get(i).getProduct().getTitle() %>" class="img-thumbnail" /></a>
 	                                </td>
-	                                <td class="text-left"><a href="product.html"><%=CartList.get(i).getProduct().getTitle() %></a>
+	                                <td class="text-left"><a href="../view/product?id=<%=CartList.get(i).getProduct().getId()%>"><%=CartList.get(i).getProduct().getTitle() %></a>
 	                                </td>
 	                                <td class="text-right">x <%=CartList.get(i).getQuantity() %></td>
 	                                <td class="text-right"><%=CartList.get(i).getProduct().getPrice() %>đ</td>
-	                                <td class="text-center"><button type="button" onclick="cart.remove('26');" title="Xóa khỏi giỏ hàng" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
+	                                <td class="text-center"><button type="button" onclick="removeCart(<%=CartList.get(i).getProduct().getId() %>);" title="Xóa khỏi giỏ hàng" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
 	                            </tr>
                         	<% } %>
                         </table>

@@ -1,5 +1,6 @@
 j2ee\group01\sportshop\dao\UserDAO.class
 j2ee\group01\sportshop\model\ShoppingCart.class
+j2ee\group01\sportshop\entity\RequestContact.class
 j2ee\group01\sportshop\dao\ProductDAO.class
 j2ee\group01\sportshop\model\CategoryModel.class
 j2ee\group01\sportshop\dao\OrderDetailDAO.class
@@ -24,6 +25,7 @@ j2ee\group01\sportshop\dao\NewsDAO.class
 j2ee\group01\sportshop\model\ProductModel.class
 j2ee\group01\sportshop\config\ApplicationContextConfig.class
 j2ee\group01\sportshop\dao\OrderDAO.class
+j2ee\group01\sportshop\dao\RequestContactDAO.class
 j2ee\group01\sportshop\authentication\MyDBAuthenticationService.class
 j2ee\group01\sportshop\dao\CategoryDAO.class
 j2ee\group01\sportshop\entity\Order.class
