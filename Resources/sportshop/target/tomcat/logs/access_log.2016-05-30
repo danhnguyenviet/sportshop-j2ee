@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [30/May/2016:23:14:46 +0700] "GET /SportShop HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [30/May/2016:23:14:46 +0700] "GET /SportShop/ HTTP/1.1" 404 971 http-bio-8080-exec-7 94
+0:0:0:0:0:0:0:1 - - [30/May/2016:23:14:46 +0700] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-8 0
+0:0:0:0:0:0:0:1 - - [30/May/2016:23:14:49 +0700] "GET /SportShop/hello HTTP/1.1" 404 981 http-bio-8080-exec-9 7
+0:0:0:0:0:0:0:1 - - [30/May/2016:23:14:53 +0700] "GET /SportShop/helloX HTTP/1.1" 200 391 http-bio-8080-exec-10 1291
+0:0:0:0:0:0:0:1 - - [30/May/2016:23:14:53 +0700] "GET /SportShop/styles.css HTTP/1.1" 404 991 http-bio-8080-exec-1 5
