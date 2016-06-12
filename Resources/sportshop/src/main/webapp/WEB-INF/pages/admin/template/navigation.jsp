@@ -170,7 +170,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-envelope"></i> Danh sách liên hệ</a>
+                    <a href="../admin/contact"><i class="fa fa-envelope"></i> Danh sách liên hệ</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Người dùng<span class="fa arrow"></span></a>

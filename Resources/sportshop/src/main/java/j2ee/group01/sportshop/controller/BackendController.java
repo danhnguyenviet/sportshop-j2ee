@@ -29,6 +29,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,12 +38,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import j2ee.group01.sportshop.dao.CategoryDAO;
+import j2ee.group01.sportshop.dao.ContactDAO;
 import j2ee.group01.sportshop.dao.ProductDAO;
 import j2ee.group01.sportshop.dao.UserDAO;
 import j2ee.group01.sportshop.entity.Order;
 import j2ee.group01.sportshop.entity.Product;
 import j2ee.group01.sportshop.entity.User;
 import j2ee.group01.sportshop.model.CategoryModel;
+import j2ee.group01.sportshop.model.ContractModel;
 import j2ee.group01.sportshop.model.ProductModel;
 import j2ee.group01.sportshop.model.ShoppingCart;
 
@@ -73,6 +76,8 @@ public class BackendController {
 	private ProductDAO productDAO;
 	@Autowired
 	private CategoryDAO categoryDAO;
+	@Autowired
+	private ContactDAO contactDAO;
 
 	@RequestMapping(value = { "/admin/home" }, method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest request) {
@@ -162,4 +167,121 @@ public class BackendController {
 
 		return "admin/tempJSP";
 	}
+	
+	
+	// Getting all contact and show to admin GUI and pagination
+	@RequestMapping(value = { "/admin/contact" }, method = RequestMethod.GET)
+	public String getContact(Model model) {
+		List<ContractModel> ContactList = new ArrayList<ContractModel>();
+			
+		ContactList = contactDAO.getAllContact();
+		// add information to request
+		model.addAttribute("ContactList", ContactList);
+		
+		
+		List<Integer> countContact = new ArrayList<Integer>();
+		
+		countContact.add(contactDAO.countContactList());
+		countContact.add(contactDAO.countContactState("new"));
+		countContact.add(contactDAO.countContactState("nonereply"));
+		countContact.add(contactDAO.countContactState("deleted"));
+		countContact.add(contactDAO.countContactState("reply"));
+		
+		model.addAttribute("countContact", countContact);
+		
+		
+
+		return "admin/contact";
+	}
+	
+	@RequestMapping(value = { "/admin/contact" }, params = {"state"} ,method = RequestMethod.GET)
+	public String getContactState(Model model, @RequestParam("state") String state) {
+		List<ContractModel> ContactList = new ArrayList<ContractModel>();
+			
+		ContactList = contactDAO.getContactState(state);
+		// add information to request
+		model.addAttribute("ContactList", ContactList);
+		
+		List<Integer> countContact = new ArrayList<Integer>();
+		
+		countContact.add(contactDAO.countContactList());
+		countContact.add(contactDAO.countContactState("new"));
+		countContact.add(contactDAO.countContactState("nonereply"));
+		countContact.add(contactDAO.countContactState("deleted"));
+		countContact.add(contactDAO.countContactState("reply"));
+		
+		model.addAttribute("countContact", countContact);
+				
+		return "admin/contact";
+	}
+	
+//	@RequestMapping(value = { "/admin/contact" }, method = RequestMethod.GET)
+//	public String getContact(Model model, String state) {
+//		List<ContractModel> ContactList = new ArrayList<ContractModel>();
+//		ContactList = contactDAO.getContactState(state);
+//
+//		// add information to request
+//		model.addAttribute("ContactList", ContactList);
+//
+//		return "admin/contact";
+//	}
+	
+	
+	//Get contact detail
+	@RequestMapping(value = { "/admin/contact-detail" }, method = RequestMethod.GET)
+	public String getContactDetail(Model model, Integer id) {
+		this.getContact(model);
+		
+		ContractModel contactdetail = new ContractModel();
+		contactdetail = contactDAO.getContactById(id);
+		
+		model.addAttribute("ContactDetail", contactdetail);
+		
+		return "admin/contact-detail";
+	}
+	
+	
+	//Get contact reply
+	@RequestMapping(value = { "/admin/contact-reply" }, method = RequestMethod.GET)
+	public String getContactReply(Model model, Integer id) {
+		this.getContact(model);
+		
+		ContractModel contactdetail = new ContractModel();
+		contactdetail = contactDAO.getContactById(id);
+		
+		model.addAttribute("ContactDetail", contactdetail);
+		
+		return "admin/contact-reply";
+	}
+	
+	
+	
+	@RequestMapping(value = { "/admin/contact-reply" }, method = RequestMethod.POST)
+	public String postContactReply(Model model, Integer id, HttpServletRequest req) {
+		this.getContact(model);
+
+		ContractModel contactdetail = new ContractModel();
+		contactdetail = contactDAO.getContactById(id);
+		
+		model.addAttribute("ContactDetail", contactdetail);
+		
+		
+		
+//		String response = "Chúng tôi rất hân hạnh được phục vụ quý khách";
+		
+		String response = req.getParameter("response");
+		
+		
+		boolean is_response = contactDAO.responseContact(id, response);
+		
+//		if(is_response) {
+//			
+//		} else {
+//			
+//		}
+		
+		return "admin/contact-reply";
+	}
+	
+	
 }
