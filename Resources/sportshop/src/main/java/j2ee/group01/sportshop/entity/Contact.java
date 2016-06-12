@@ -27,6 +27,12 @@ public class Contact implements java.io.Serializable {
 	private String detail;
 	private int isActive;
 	private Date dateCreate;
+	private String state;
+	private String response;
+
+	
+
+	
 
 	public Contact() {
 	}
@@ -50,9 +56,26 @@ public class Contact implements java.io.Serializable {
 	public Integer getId() {
 		return this.id;
 	}
+	
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String response) {
+		this.response = response;
+	}
+	
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	@Column(name = "fullname", nullable = false, length = 65535)
