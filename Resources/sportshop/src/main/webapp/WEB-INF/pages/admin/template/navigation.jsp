@@ -148,10 +148,10 @@
                     <a href="#"><i class="fa fa-book fa-fw"></i> Sản phẩm <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">Danh sách sản phẩm</a>
+                            <a href="../admin/productlist">Danh sách sản phẩm</a>
                         </li>
                         <li>
-                            <a href="#">Thêm mới sản phẩm</a>
+                            <a href="../admin/newproductpage">Thêm mới sản phẩm</a>
                         </li>
                     </ul>
                 </li>
