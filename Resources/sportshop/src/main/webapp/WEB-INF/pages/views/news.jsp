@@ -28,9 +28,8 @@
 			<div class="container">
 				<!-- Site map -->
 				<ul class="breadcrumb">
-                    <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-                    <li><a href="category.html">Áo thể thao</a></li>
-                    <li><a href="category.html">Áo thể thao 2</a></li>
+                    <li><a href="../view/home"><i class="fa fa-home"></i></a></li>
+                    <li><a href="../view/news">Tin Tức</a></li>
              	</ul>
 				<!-- /Site map -->
                 <div class="row">
