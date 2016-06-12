@@ -36,6 +36,20 @@ public class CategoryDAO {
 		return result;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<CategoryModel> getAllActiveCategory(int max){
+		String sql = "select c from Category c where c.isActive=1 and c.idParent<>null order by c.dateCreate desc, c.title desc";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(max);
+		
+		List<Category> allActiveCategory = (List<Category>)criteria.list();
+		List<CategoryModel> result = new ArrayList<CategoryModel>();
+		for (Category category : allActiveCategory) {
+			result.add(new CategoryModel(category));
+		}
+		
+		return result;
+	}
+	
 	public CategoryModel getCategoryDefault(){
 		String sql = "select c from Category c order by c.dateCreate desc, c.title desc";
 		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(1);

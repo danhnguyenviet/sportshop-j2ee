@@ -43,6 +43,9 @@ public class MyDBAuthenticationService implements UserDetailsService {
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;*/
+        
+    	
+    	// cho nay m lay user de so sanh
  
         UserDetails userDetails = (UserDetails) new User();
  
