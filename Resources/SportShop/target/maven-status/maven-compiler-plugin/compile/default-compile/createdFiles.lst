@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 j2ee\group01\sportshop\dao\UserDAO.class
 j2ee\group01\sportshop\model\ShoppingCart.class
 j2ee\group01\sportshop\entity\RequestContact.class
@@ -31,4 +29,3 @@ j2ee\group01\sportshop\dao\RequestContactDAO.class
 j2ee\group01\sportshop\authentication\MyDBAuthenticationService.class
 j2ee\group01\sportshop\dao\CategoryDAO.class
 j2ee\group01\sportshop\entity\Order.class
->>>>>>> origin/luong
