@@ -237,26 +237,78 @@ public class ProductDAO {
 		return result;
 	}
 
-	public void insertProduct(Product product){
+	public int insertProduct(Product product) {
+		int id = -1;
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			id = ((Integer)(session.save(product))).intValue();
+			tx.commit();
+		} catch (RuntimeException e) {
+			if (tx != null)
+				tx.rollback();
+			throw e; // or display error message
+		} finally {
+			session.close();
+		}
+		return id;
+	}
+	
+	public boolean saveUpdateImage(int id, String img){
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
 		    tx = session.beginTransaction();
-		    session.save(product);
+		    Product news = (Product)session.createQuery("select n from Product n where n.id=?")
+		    		.setParameter(0, id).uniqueResult();
+		    news.setImages(img);
+		    session.save(news);
 		    tx.commit();
 		}
 		catch (RuntimeException e) {
 		    if (tx != null) tx.rollback();
-		    throw e; // or display error message
+		    return false;
 		}
 		finally {
 			session.close();
 		}
+		return true;
 	}
-	
+
 	public void deleteProduct(int id) {
 		String sql = "delete from Product p where p.id= ?";
 		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setParameter(0, id);
 		criteria.executeUpdate();
+	}
+
+	public void updateProduct(Product product) {
+		String hql = "update Product set alias = :alias," + "code = :code," + "dateCreate = :dateCreate,"
+				+ "dateUpdate = :dateUpdate," + "description = :description," + "idAccount = :idAccount,"
+				+ "idCategory = :idCategory," + "images = :images," + "isActive = :isActive,"
+				+ "isSavedraft = :isSavedraft," + "price = :price," + "pricePromotion = :pricePromotion,"
+				+ "purchase = :purchase," + "quantity = :quantity," + "title = :title," + "views = :views"
+				+ " where id = :id";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(hql);
+		criteria.setParameter("alias", product.getAlias());
+		criteria.setParameter("code", product.getCode());
+		criteria.setParameter("dateCreate", product.getDateCreate());
+		criteria.setParameter("dateUpdate", product.getDateUpdate());
+		criteria.setParameter("description", product.getDescription());
+		criteria.setParameter("idAccount", product.getIdAccount());
+		criteria.setParameter("idCategory", product.getIdCategory());
+		criteria.setParameter("images", product.getImages());
+		criteria.setParameter("isActive", product.getIsActive());
+		criteria.setParameter("isSavedraft", product.getIsSavedraft());
+		criteria.setParameter("price", product.getPrice());
+		criteria.setParameter("pricePromotion", product.getPricePromotion());
+		criteria.setParameter("purchase", product.getPurchase());
+		criteria.setParameter("quantity", product.getQuantity());
+		criteria.setParameter("title", product.getTitle());
+		criteria.setParameter("views", product.getViews());
+		criteria.setParameter("id", product.getId());
+		int result = criteria.executeUpdate();
+		
+		System.out.println("Rows affected: " + result);
 	}
 }

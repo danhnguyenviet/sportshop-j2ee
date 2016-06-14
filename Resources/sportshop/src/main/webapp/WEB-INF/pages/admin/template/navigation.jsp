@@ -156,7 +156,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-book fa-fw"></i> Danh sách đơn hàng</a>
+                    <a href="../admin/orderlist"><i class="fa fa-book fa-fw"></i> Danh sách đơn hàng</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-book fa-fw"></i> Bài viết <span class="fa arrow"></span></a>
