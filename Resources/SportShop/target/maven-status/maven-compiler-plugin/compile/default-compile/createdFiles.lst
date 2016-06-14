@@ -31,4 +31,8 @@ j2ee\group01\sportshop\dao\RequestContactDAO.class
 j2ee\group01\sportshop\authentication\MyDBAuthenticationService.class
 j2ee\group01\sportshop\dao\CategoryDAO.class
 j2ee\group01\sportshop\entity\Order.class
+<<<<<<< HEAD
 >>>>>>> origin/luong
+=======
+>>>>>>> refs/remotes/origin/danh-functions-dev
+>>>>>>> origin/linh
