@@ -300,8 +300,16 @@
 				<input type="submit" class="btn btn-primary submit pull-right"
 					value="Đặt hàng ngay" onclick="checkoutCart()">
 			</p>
+			<script type="text/javascript">
+				function returnHome(){
+					window.location.href = "../view/home";
+					return;
+				}
+			
+			</script>
+			
 			<p class="form-submit">
-				<input type="submit" onclick="window.location.href = ../view/home"
+				<input type="submit" onclick="returnHome();"
 					class="btn btn-primary continue-shopping pull-left"
 					value="Tiếp tục mua sắm" title="Quay về trang chủ">
 			</p>

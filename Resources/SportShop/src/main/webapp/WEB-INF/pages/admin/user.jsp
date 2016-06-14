@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="j2ee.group01.sportshop.model.UserModel"%>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -37,30 +39,23 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
+                                            <th>UserName</th>
+                                            <th>Full Name</th>
+                                            <th>Email</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <%
+												List<UserModel> UserList = (List<UserModel>) request.getAttribute("UserList");
+												for (int i = 0; i < UserList.size(); i++) {
+											%>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                            <td><%= i+1 %></td>
+                                            <td><%= UserList.get(i).getUsername()%></td>
+                                            <td><%= UserList.get(i).getFullname()%></td>
+                                            <td><%= UserList.get(i).getEmail()%></td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
+                                        <% } %>
                                     </tbody>
                                 </table>
                             </div>

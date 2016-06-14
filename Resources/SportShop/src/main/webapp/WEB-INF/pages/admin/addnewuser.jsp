@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="j2ee.group01.sportshop.model.UserModel"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,7 +39,7 @@
                                     </label>
                                     <div class="col-md-9">
                                         <div class="input-icon right">
-                                            <input type="text" class="form-control" name="title" value="">
+                                            <input id="input-username" type="text" class="form-control" name="username" value="">
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -49,7 +50,7 @@
                                     </label>
                                     <div class="col-md-9">
                                         <div class="input-icon right">
-                                            <input type="text" class="form-control" name="title" value="">
+                                            <input id="input-password" type="text" class="form-control" name="password" value="">
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -60,7 +61,7 @@
                                     </label>
                                     <div class="col-md-9">
                                         <div class="input-icon right">
-                                            <input type="text" class="form-control" name="title" value="">
+                                            <input id="input-fullname" type="text" class="form-control" name="fullname" value="">
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -71,7 +72,7 @@
                                     </label>
                                     <div class="col-md-9">
                                         <div class="input-icon right">
-                                            <input type="text" class="form-control" name="title" value="">
+                                            <input id="input-email" type="text" class="form-control" name="email" value="">
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -107,7 +108,7 @@
                             <div class="form-group">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="">Khóa tài khoản
+                                        <input id="input-isactive" type="checkbox" name="isactive" value=1>Khóa tài khoản
                                     </label>
                                 </div>
                                 <div class="checkbox">
@@ -124,7 +125,7 @@
                         </div>
                         <div class="panel-body">
                             <button type="reset" class="btn btn-default">XÓA TẤT CẢ</button>
-                            <button type="submit" class="btn btn-danger">ĐĂNG DỮ LIỆU</button>
+                            <button type="submit" class="btn btn-danger" value="Send" onclick="postRequestToAdmin()" >ĐĂNG DỮ LIỆU</button>
                         </div>
                     </div>
                 </div>
@@ -136,5 +137,55 @@
     
     <!-- Script files -->
     <%@ include file = "template/foot.jsp" %>
+    
+    <script type="text/javascript">
+    function postRequestToAdmin(){
+		var fusername = document.getElementById("input-username").value;
+		var fpassword = document.getElementById("input-password").value;
+		var femail = document.getElementById("input-email").value;
+		var ffullname = document.getElementById("input-fullname").value;
+		var fisactive = document.getElementById("input-isactive").value;
+		if(fusername.length < 1){
+			document.getElementById('input-username').focus();
+			alert("username đầy đủ không được để trống. Xin cám ơn!");
+			return;
+		}
+		if(fpassword.length < 1){
+			document.getElementById('input-password').focus();
+			alert("password đầy đủ không được để trống. Xin cám ơn!");
+			return;
+		}
+		if(femail.length < 1){
+			document.getElementById('input-email').focus();
+			alert("Email liên hệ không được để trống. Xin cám ơn!");
+			return;
+		}
+		if(ffullname.length < 1){
+			document.getElementById('input-fullname').focus();
+			alert("fullname đầy đủ không được để trống. Xin cám ơn!");
+			return;
+		}
+// 		if(fcontent.length < 1){
+// 			document.getElementById('input-enquiry').focus();
+// 			alert("Nội dung liên hệ không được để trống. Xin cám ơn!");
+// 			return;
+// 		}
+		$.post("../admin/saveUserRequest", {
+					username : fusername,
+					password : fpassword,					
+					fullname : ffullname,	
+					email : femail,
+					isactive: fisactive
+				})
+				.done(function(data) {
+					alert("Thêm tài khoản thành công");
+				})
+				.fail(
+						function() {
+							alert("Hiện tại quá trình thêm tài khoản gặp lỗi. Vui lòng thử lại. Xin cám ơn!");
+			
+						});
+	};
+    </script>
 </body>
 </html>

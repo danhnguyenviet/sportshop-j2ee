@@ -173,13 +173,13 @@
                     <a href="#"><i class="fa fa-envelope"></i> Danh sách liên hệ</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
+                    <a href="~/admin/user"><i class="fa fa-bar-chart-o fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">Danh sách người dùng</a>
+                            <a href="../admin/user">Danh sách người dùng</a>
                         </li>
                         <li>
-                            <a href="#">Thêm người dùng</a>
+                            <a href="../admin/addnewuser">Thêm người dùng</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
