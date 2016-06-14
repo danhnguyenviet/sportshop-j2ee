@@ -99,7 +99,17 @@ public class BackendController {
 	private OrderDAO orderDAO;
 	@Autowired
 	private OrderDetailDAO orderDetailDAO;
+	@Autowired
+    private NewsDAO newsDAO;
+	@Autowired
 	private ContactDAO contactDAO;
+
+	private int itemPerPage = 12;
+	private int newestItem = 5;
+	private int maxCategorySelect = 20;
+	private int recommandProduct = 10;
+	private int newsPerPage = 3;
+	private int mostViewNews = 8;
  
     @RequestMapping(value = { "/admin/home" }, method = RequestMethod.GET)
     public String home(Model model) {
@@ -349,13 +359,98 @@ public class BackendController {
 		return "admin/orderlist";
 	}
 
-	private String uploadImage(String fileName, String savePath, String rootPath, MultipartFile file)
-			throws IOException {
-		String fileNamers = "";
-		if (!file.isEmpty()) {
+    @RequestMapping(value = { "/admin/news" }, method = RequestMethod.GET)
+    public String news(Model model) {
+    	
+    	// load body content
+    	// get list news newest update
+    	List<NewsModel> newsListResult = new ArrayList<NewsModel>();
+    	List<News> newsList= new ArrayList<News>();
+    	newsList = newsDAO.getAllNews();
+    	for (News news : newsList) {
+			NewsModel item = new NewsModel();
+			item.setAuthor(userDAO.getUserName(news.getIdUser()));
+			item.setDateCreate((new SimpleDateFormat("dd/MM/yyyy")).format(news.getDateCreate()));
+			item.setDateUpdate((new SimpleDateFormat("dd/MM/yyyy")).format(news.getDateUpdate()));
+			item.setId(news.getId());
+			item.setImage(news.getImage());
+			item.setIsActive(news.getIsActive());
+			item.setIsSavedraft(news.getIsSavedraft());
+			item.setLongDetail(news.getLongDetail());
+			item.setShortDetail(news.getShortDetail());
+			item.setTitle(news.getTitle());
+			item.setViews(news.getViews());
+			newsListResult.add(item);
+		}
+    	
+    	model.addAttribute("NewsListResult", newsListResult);
+    	
+        return "admin/news_list";
+    }
+    
+    @RequestMapping(value = { "/admin/addNews" }, method = RequestMethod.GET)
+    public String addNews(Model model) {
+    	
+        return "admin/add_news";
+    }
+    
+    @RequestMapping(value = { "/admin/doAddNews" }, method = RequestMethod.POST)
+    //@ResponseStatus(value = HttpStatus.OK)
+    public String doAddNews(Model model,HttpServletRequest request,
+    		HttpServletResponse response,
+    		@RequestParam(value = "title", defaultValue="") String title,
+    		@RequestParam(value = "shortContent", defaultValue="") String shortContent,
+    		@RequestParam(value = "longContent", defaultValue="") String longContent,
+			@RequestParam(value = "file") MultipartFile file) throws IOException {
+    	try {
+    		// get current user id
+        	int userId = 1;//((User)(request.getAttribute("loginUser"))).getId();
+        	// create news item for insert
+        	News insertItem = new News();
+        	insertItem.setId(null);
+        	Date currentDate = new Date();
+        	insertItem.setDateCreate(currentDate);
+        	insertItem.setDateUpdate(currentDate);
+        	insertItem.setIdUser(userId);
+        	insertItem.setImage("");
+        	insertItem.setIsActive(1);
+        	insertItem.setIsSavedraft(0);
+        	insertItem.setLongDetail(longContent);
+        	insertItem.setShortDetail(shortContent);
+        	insertItem.setTitle(title);
+        	insertItem.setViews(0);
+        	int newsId = newsDAO.insertNews(insertItem);
+        	
+        	// upload image and udpate to database
+        	String fileName = newsId+".png";
+        	String rootPath = request.getServletContext().getRealPath("");
+        	String savePath = "image/news";
+        	String fileNameRs = uploadImage(fileName, savePath, rootPath, file);
+        	
+        	// update image to db
+        	if(!newsDAO.saveUpdateImage(newsId, fileNameRs)){
+        		response.setStatus(403);
+        		model.addAttribute("msg", "Thất bại. Đã xảy ra lỗi trong quá trình upload ảnh.");
+        		model.addAttribute("error", "error");
+        	}else{
+        		model.addAttribute("msg", "Thành công. Đã thêm bài viết xuống hệ thống!");
+        	}
+        	
+		} catch (Exception e) {
+			model.addAttribute("msg", "Thất bại! Đã xảy ra lỗi trong quá trình upload ảnh.");
+    		model.addAttribute("error", "error");
+		}
+    	
+    	return "admin/only_message_result";
+    }
+
+    private String uploadImage(String fileName, String savePath, 
+    		String rootPath, MultipartFile file)throws IOException{
+    	String fileNamers = "";
+    	if (!file.isEmpty()) {
 			try {
 				byte[] bytes = file.getBytes();
-
+				
 				File dir = new File(rootPath + File.separator + savePath);
 				if (!dir.exists())
 					dir.mkdirs();
@@ -511,5 +606,95 @@ public class BackendController {
 		
 		return "admin/contact-reply";
 	}
+
+    @RequestMapping(value = { "/admin/editNews" }, method = RequestMethod.GET)
+    public String editNews(Model model,
+    		@RequestParam(value = "id", defaultValue="-1") int newsId) throws Exception {
+    	
+    	News currentNews = null;
+    	if(newsId > 0){
+    		currentNews = newsDAO.getNewsFromId(newsId);
+    		if(currentNews == null){
+        		throw new Exception();
+        		}
+    	}else{
+    		throw new Exception();
+    	}
+    	// get this news information
+    	NewsModel newsInformation = new NewsModel();
+    	newsInformation.setAuthor(userDAO.getUserName(currentNews.getIdUser()));
+    	newsInformation.setDateCreate((new SimpleDateFormat("dd/MM/yyyy")).format(currentNews.getDateCreate()));
+    	newsInformation.setDateUpdate((new SimpleDateFormat("dd/MM/yyyy")).format(currentNews.getDateUpdate()));
+    	newsInformation.setId(currentNews.getId());
+    	newsInformation.setImage(currentNews.getImage());
+    	newsInformation.setIsActive(currentNews.getIsActive());
+    	newsInformation.setIsSavedraft(currentNews.getIsSavedraft());
+    	newsInformation.setLongDetail(currentNews.getLongDetail());
+    	newsInformation.setShortDetail(currentNews.getShortDetail());
+    	newsInformation.setTitle(currentNews.getTitle());
+    	newsInformation.setViews(currentNews.getViews());
+    	
+    	model.addAttribute("NewsInformation", newsInformation);
+    	
+        return "admin/edit_news";
+    }
+    
+    @RequestMapping(value = { "/admin/doEditNews" }, method = RequestMethod.POST)
+    public String doEditNews(Model model,HttpServletRequest request,
+    		HttpServletResponse response,
+    		@RequestParam(value = "id", defaultValue="-1") int newsId,
+    		@RequestParam(value = "title", defaultValue="") String title,
+    		@RequestParam(value = "shortContent", defaultValue="") String shortContent,
+    		@RequestParam(value = "longContent", defaultValue="") String longContent) throws IOException {
+    	try {
+    		News currentNews = null;
+    		currentNews = newsDAO.getNewsFromId(newsId);
+    		if(currentNews == null){
+    			throw new Exception();
+    		}
+    		
+    		currentNews.setTitle(title);
+    		currentNews.setShortDetail(shortContent);
+    		currentNews.setLongDetail(longContent);
+    		currentNews.setDateUpdate(new Date());
+    		
+    		if(newsDAO.updateNews(currentNews)){
+    			model.addAttribute("msg", "Thành công. Đã cập nhật bài viết xuống hệ thống!");
+    		}else{
+    			response.setStatus(403);
+        		model.addAttribute("msg", "Thất bại! Đã xảy ra lỗi trong quá trình cập nhật.");
+        		model.addAttribute("error", "error");
+    		}
+		} catch (Exception e) {
+			model.addAttribute("msg", "Thất bại! Đã xảy ra lỗi trong quá trình cập nhật.");
+    		model.addAttribute("error", "error");
+		}
+    	
+    	return "admin/only_message_result";
+    }
+
+    @RequestMapping(value = { "/admin/deleteNews" }, method = RequestMethod.POST)
+    public String deleteNews(Model model,HttpServletRequest request,
+    		HttpServletResponse response,
+    		@RequestParam(value = "id", defaultValue="-1") int newsId) throws IOException {
+    	try {
+    		if(newsId < 0){
+    			throw new Exception();
+    		}
+    		
+    		if(newsDAO.deleteNews(newsId)){
+    			response.setStatus(200);
+    			model.addAttribute("msg", "success");
+    		}else{
+    			response.setStatus(403);
+        		model.addAttribute("failed");
+    		}
+		} catch (Exception e) {
+			response.setStatus(403);
+    		model.addAttribute("failed");
+		}
+    	
+    	return "admin/only_message_result";
+    }
 
 }
