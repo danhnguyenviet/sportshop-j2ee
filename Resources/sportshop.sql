@@ -1,5 +1,5 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `sportshop`
@@ -26,17 +26,16 @@ SET time_zone = "+00:00";
 -- Table structure for table `category`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `id_parent` int(11) DEFAULT NULL,
   `is_active` int(11) NOT NULL,
   `date_create` datetime NOT NULL,
   `slug` text COLLATE utf8_unicode_ci NOT NULL,
-  `image` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+  `image` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `category`
@@ -63,8 +62,8 @@ INSERT INTO `category` (`id`, `title`, `description`, `id_parent`, `is_active`, 
 -- Table structure for table `contact`
 --
 
-CREATE TABLE IF NOT EXISTS `contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
   `fullname` text COLLATE utf8_unicode_ci NOT NULL,
   `address` text COLLATE utf8_unicode_ci NOT NULL,
   `email` text COLLATE utf8_unicode_ci NOT NULL,
@@ -73,8 +72,24 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `detail` text COLLATE utf8_unicode_ci NOT NULL,
   `is_active` int(11) NOT NULL,
   `date_create` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  `state` text COLLATE utf8_unicode_ci,
+  `response` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `fullname`, `address`, `email`, `phone`, `title`, `detail`, `is_active`, `date_create`, `state`, `response`) VALUES
+(1, 'Phạm Ngọc Linh', 'Thành phồ Hồ Chí Minh', 'pnlinh93@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'nonereply', 'Chúng tôi r?t hân h?nh ???c ph?c v? quý kháchChúng tôi r?t hân h?nh ???c ph?c v? quý khách'),
+(2, 'Huỳnh Đức Đăng Khoa', 'Thành phồ Hồ Chí Minh', 'dangkhoahuynh@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'reply', 'Chúng tôi r?t hân h?nh ???c ph?c v? quý kháchChúng tôi r?t hân h?nh ???c ph?c v? quý khách'),
+(3, 'Văn Tuấn', 'Thành phồ Hồ Chí Minh', 'pnlinh93@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'new', 'Pháº¡m Ngá»?c Linh Ä?Ã£ response vÃ o ngÃ y 25 thÃ¡ng 10'),
+(4, 'Duy Lương', 'Thành phồ Hồ Chí Minh', 'dangkhoahuynh@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'deleted', NULL),
+(5, 'Quốc Bảo', 'Thành phồ Hồ Chí Minh', 'dangkhoahuynh@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'new', NULL),
+(6, 'Thị Nỡ', 'Thành phồ Hồ Chí Minh', 'dangkhoahuynh@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'reply', NULL),
+(7, 'Tuấn Tú', 'Thành phồ Hồ Chí Minh', 'pnlinh93@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'new', NULL),
+(8, 'Duy Lương', 'Thành phồ Hồ Chí Minh', 'dangkhoahuynh@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'reply', NULL),
+(9, 'Duy Lương', 'Thành phồ Hồ Chí Minh', 'dangkhoahuynh@mgail.com', '0909999999', 'Yêu cầu hỗ trợ', 'Vui lòng liên hệ lại...', 0, '2016-06-22 00:00:00', 'deleted', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,8 +97,8 @@ CREATE TABLE IF NOT EXISTS `contact` (
 -- Table structure for table `news`
 --
 
-CREATE TABLE IF NOT EXISTS `news` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `title` text COLLATE utf8_unicode_ci NOT NULL,
   `short_detail` text COLLATE utf8_unicode_ci NOT NULL,
@@ -93,9 +108,8 @@ CREATE TABLE IF NOT EXISTS `news` (
   `date_create` datetime NOT NULL COMMENT 'Thời gian khởi tạo',
   `date_update` datetime NOT NULL COMMENT 'Thời gian cập nhật gần đây nhất',
   `is_savedraft` int(11) NOT NULL,
-  `views` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+  `views` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `news`
@@ -116,8 +130,8 @@ INSERT INTO `news` (`id`, `id_user`, `title`, `short_detail`, `long_detail`, `im
 -- Table structure for table `order`
 --
 
-CREATE TABLE IF NOT EXISTS `order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL,
   `fullname` text COLLATE utf8_unicode_ci NOT NULL,
   `address` text COLLATE utf8_unicode_ci NOT NULL,
   `phone` text COLLATE utf8_unicode_ci NOT NULL,
@@ -130,9 +144,8 @@ CREATE TABLE IF NOT EXISTS `order` (
   `note` int(11) DEFAULT NULL,
   `total_amount` double NOT NULL,
   `total_amount_real` double NOT NULL,
-  `is_active` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+  `is_active` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `order`
@@ -158,16 +171,15 @@ INSERT INTO `order` (`id`, `fullname`, `address`, `phone`, `email`, `ship_addres
 -- Table structure for table `order_detail`
 --
 
-CREATE TABLE IF NOT EXISTS `order_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order_detail` (
+  `id` int(11) NOT NULL,
   `id_order` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` double NOT NULL,
   `price_promotion` datetime DEFAULT NULL,
-  `total` double NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
+  `total` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `order_detail`
@@ -210,8 +222,8 @@ INSERT INTO `order_detail` (`id`, `id_order`, `id_product`, `quantity`, `price`,
 -- Table structure for table `product`
 --
 
-CREATE TABLE IF NOT EXISTS `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
   `code` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
   `id_category` int(11) NOT NULL,
   `id_account` int(11) NOT NULL,
@@ -227,10 +239,8 @@ CREATE TABLE IF NOT EXISTS `product` (
   `is_active` int(11) NOT NULL,
   `is_savedraft` int(11) DEFAULT NULL,
   `views` int(11) NOT NULL,
-  `purchase` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=40 ;
+  `purchase` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `product`
@@ -268,15 +278,14 @@ INSERT INTO `product` (`id`, `code`, `id_category`, `id_account`, `price`, `pric
 -- Table structure for table `request_contact`
 --
 
-CREATE TABLE IF NOT EXISTS `request_contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `request_contact` (
+  `id` int(11) NOT NULL,
   `fullname` text COLLATE utf8_unicode_ci NOT NULL,
   `email` text COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `is_repsonse` bit(1) NOT NULL,
-  `date_create` datetime NOT NULL COMMENT 'Thời gian khởi tạo',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+  `date_create` datetime NOT NULL COMMENT 'Thời gian khởi tạo'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `request_contact`
@@ -292,16 +301,15 @@ INSERT INTO `request_contact` (`id`, `fullname`, `email`, `content`, `is_repsons
 -- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `username` text COLLATE utf8_unicode_ci NOT NULL,
   `password` text COLLATE utf8_unicode_ci NOT NULL,
   `fullname` text COLLATE utf8_unicode_ci NOT NULL,
   `email` text COLLATE utf8_unicode_ci NOT NULL,
   `id_role` bit(1) NOT NULL,
-  `is_active` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+  `is_active` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`
@@ -315,6 +323,103 @@ INSERT INTO `user` (`id`, `username`, `password`, `fullname`, `email`, `id_role`
 (6, 'ngoclinh', '123456', 'Phạm Ngọc Linh', 'linh@gmail.com', b'1', 1),
 (7, 'dangkhoa', '123456', 'Huỳnh Đức Đăng Khoa', 'dangkhoa@gmail.com', b'1', 1);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `code` (`code`);
+
+--
+-- Indexes for table `request_contact`
+--
+ALTER TABLE `request_contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `order_detail`
+--
+ALTER TABLE `order_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+--
+-- AUTO_INCREMENT for table `request_contact`
+--
+ALTER TABLE `request_contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
