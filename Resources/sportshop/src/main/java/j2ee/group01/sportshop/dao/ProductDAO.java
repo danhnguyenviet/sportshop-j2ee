@@ -69,6 +69,18 @@ public class ProductDAO {
 		}
 		return result;
 	}
+	
+	public List<ProductModel> getSlideshowProduct(int max) {
+		String sql = "select p from Product p order by p.id asc";
+		Query criteria = sessionFactory.getCurrentSession().createQuery(sql).setMaxResults(max);
+		List<Product> allProduct = (List<Product>) criteria.list();
+		List<ProductModel> result = new ArrayList<ProductModel>();
+		for (Product product : allProduct) {
+			ProductModel item = new ProductModel(product);
+			result.add(item);
+		}
+		return result;
+	}
 
 	public List<ProductModel> getNewestProductFromCategory(int max, int categoryId) {
 		String sql = "select p from Product p where p.idCategory=? order by p.dateUpdate desc";

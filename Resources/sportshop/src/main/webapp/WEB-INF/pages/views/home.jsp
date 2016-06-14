@@ -1,3 +1,5 @@
+<%@ page errorPage="/WEB-INF/pages/error.jsp" %>
+
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -37,7 +39,7 @@
 			<%@ include file="../views/templates/menu.jsp"%>
 			<!-- /Menu -->
 			
-			<!-- Slide show -->
+			<%-- <!-- Slide show -->
 			<div class="slideshow " id="pavo-slideshow">
                 <div class="container">
                     <div class="inner">
@@ -50,8 +52,8 @@
 												List<ProductModel> SlideShowList = (List<ProductModel>) request.getAttribute("SlideShowProductList");
 												for (int i = 0; i < SlideShowList.size(); i++) {
 											%>
-	                                            <li data-masterspeed="300" data-transition="random" data-slotamount="7" data-thumb="../image/slider/<%= SlideShowList.get(i).getImages().get(0)%>">
-	                                                <img src="../image/slider/<%= SlideShowList.get(i).getImages().get(0) %>" alt="Slide show "<%=i %> />
+	                                            <li data-masterspeed="300" data-transition="random" data-slotamount="7" data-thumb="../../image/slider/<%= SlideShowList.get(i).getImages().get(0)%>">
+	                                                <img src="../../image/slider/<%= SlideShowList.get(i).getImages().get(0) %>" alt="Slide show "<%=i %> />
 	                                                
 	                                                <!-- THE MAIN IMAGE IN THE SLIDE -->
 	                                                <div class="caption custom2 randomrotate easeInElastic easeInElastic" data-x="77" data-y="107" data-speed="300" data-start="800" data-easing="easeOutExpo">
@@ -122,7 +124,9 @@
                     </div>
                 </div>
             </div>
-			<!-- /Slide show -->
+			<!-- /Slide show --> --%>
+			
+			${SlideshowHtml }
 			
 			<!-- Top product list: newest and most purchase -->
 			<div class="container">

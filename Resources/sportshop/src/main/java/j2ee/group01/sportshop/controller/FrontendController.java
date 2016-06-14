@@ -127,6 +127,23 @@ public class FrontendController {
     	// get list category 
     	List<CategoryModel> categoryList = new ArrayList<CategoryModel>();
     	categoryList = categoryDAO.getAllCategory(maxCategorySelect);
+    	// get slideshoư html from static html resource
+    	String slideshowHtml = "";
+		try {
+			Resource resource = new ClassPathResource("document/Slideshow.html");
+	    	BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(resource.getURI().getPath()),"UTF8"));
+			String str  = null;
+			while((str = in.readLine()) != null){
+				slideshowHtml += str;
+			}
+			in.close();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     	
     	
     	// load body content
@@ -139,9 +156,9 @@ public class FrontendController {
     	// get list product newest update
     	List<ProductModel> newsestList = new ArrayList<ProductModel>();
     	newsestList = productDAO.getNewestProduct(recommandProduct);
-    	// get list slide show from most purchase list
+    	/*// get list slide show from most purchase list
     	List<ProductModel> slideShow = new ArrayList<ProductModel>();
-    	slideShow = mostList;//.//subList(0, newestItem);
+    	slideShow = productDAO.getSlideshowProduct(3);*/
     	// get banner infomation 
     	String leftBanner="";
     	String midBanner="";
@@ -214,11 +231,11 @@ public class FrontendController {
     	// add information to request
     	model.addAttribute("SaleProductList", saleList);
     	model.addAttribute("CategoryList", categoryList);
+    	model.addAttribute("SlideshowHtml", slideshowHtml);
     	
     	model.addAttribute("MostPurchaseProductList", mostList);
     	model.addAttribute("FeatureProductList", viewsList);
     	model.addAttribute("NewestProductList", newsestList);
-    	model.addAttribute("SlideShowProductList", slideShow);
     	model.addAttribute("MiddleBannerImage", midBanner);
     	model.addAttribute("LeftBannerImage", leftBanner);
     	
@@ -1371,4 +1388,15 @@ public class FrontendController {
         return "views/category";
     }
     
+    
+    // GET: Show eror Page
+    // GET: Hiển thị trang lỗi
+    @RequestMapping(value = { "/error" }, method = RequestMethod.GET)
+    public String error(Model model,
+    		@RequestParam(value = "msg", defaultValue="1") String message){
+    	model.addAttribute("msg", message);
+    	return "error";
+    }
+    	
+    	// load header information
 }

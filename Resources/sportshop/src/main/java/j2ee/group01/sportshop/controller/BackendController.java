@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -377,8 +378,10 @@ public class BackendController {
 			@RequestParam(value = "longContent", defaultValue = "") String longContent,
 			@RequestParam(value = "file") MultipartFile file) throws IOException {
 		try {
-			// get current user id
-			int userId = 1;// ((User)(request.getAttribute("loginUser"))).getId();
+			Principal principal = request.getUserPrincipal();
+			String username = principal.getName();
+			User us = userDAO.getUserFromUsername(username);
+			int userId = us.getId();
 			// create news item for insert
 			News insertItem = new News();
 			insertItem.setId(null);
@@ -684,17 +687,6 @@ public class BackendController {
 		return "admin/contact";
 	}
 
-	// @RequestMapping(value = { "/admin/contact" }, method = RequestMethod.GET)
-	// public String getContact(Model model, String state) {
-	// List<ContractModel> ContactList = new ArrayList<ContractModel>();
-	// ContactList = contactDAO.getContactState(state);
-	//
-	// // add information to request
-	// model.addAttribute("ContactList", ContactList);
-	//
-	// return "admin/contact";
-	// }
-
 	// Get contact detail
 	@RequestMapping(value = { "/admin/contact-detail" }, method = RequestMethod.GET)
 	public String getContactDetail(Model model, Integer id) {
@@ -755,5 +747,11 @@ public class BackendController {
 			response.setStatus(403);
 		}
 		return "admin/home";
+	}
+	
+	@RequestMapping(value = { "/403" }, method = RequestMethod.GET)
+	public String erorDenied(Model model) {
+		model.addAttribute("msg", "Bạn không có quyền truy cập vào chức năng này!");
+		return "403";
 	}
 }
