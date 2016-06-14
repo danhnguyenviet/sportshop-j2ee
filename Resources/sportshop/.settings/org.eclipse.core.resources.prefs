@@ -4,6 +4,7 @@ encoding//src/main/java/j2ee/group01/sportshop/config/WebMvcConfig.java=UTF-8
 encoding//src/main/java/j2ee/group01/sportshop/config/WebSecurityConfig.java=UTF-8
 encoding//src/main/java/j2ee/group01/sportshop/controller/BackendController.java=UTF-8
 encoding//src/main/java/j2ee/group01/sportshop/controller/FrontendController.java=UTF-8
+encoding//src/main/java/j2ee/group01/sportshop/model/ContractModel.java=UTF-8
 encoding//src/main/resources/document/About.html=UTF-8
 encoding//src/main/resources/document/Services.html=UTF-8
 encoding//src/main/resources/properties/about.properties=UTF-8
