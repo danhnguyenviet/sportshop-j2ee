@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
 	
-	function removeCart(productId) {
+	function removeCartTop(productId) {
 		$.post("../view/deleteFromCart", {id : productId})
 		.done(function(data) {
 			var $response = $(data);
@@ -22,8 +22,7 @@
 		})
 		.fail(
 				function() {
-					/* var message = '<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Cảnh báo! </strong> Đã xảy ra lỗi trong quá trình xóa sản phẩm khỏi giỏ hàng. Vui lòng thử lại. </div>';
-					$('#InformContentCartPage').append(message); */
+					alert("Đã có lỗi xảy ra trong quá trình cập nhật giỏ hàng. Vui lòng thử lại. Xin cảm ơn!");
 				});
 	};
 	
@@ -50,7 +49,7 @@
 	                                </td>
 	                                <td class="text-right">x <%=CartList.get(i).getQuantity() %></td>
 	                                <td class="text-right"><%=CartList.get(i).getProduct().getPrice() %>đ</td>
-	                                <td class="text-center"><button type="button" onclick="removeCart(<%=CartList.get(i).getProduct().getId() %>);" title="Xóa khỏi giỏ hàng" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
+	                                <td class="text-center"><button type="button" onclick="removeCartTop(<%=CartList.get(i).getProduct().getId() %>);" title="Xóa khỏi giỏ hàng" class="btn btn-default btn-xs"><i class="fa fa-times"></i></button></td>
 	                            </tr>
                         	<% } %>
                         </table>

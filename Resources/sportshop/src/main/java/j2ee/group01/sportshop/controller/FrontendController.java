@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -93,6 +94,27 @@ public class FrontendController {
     @Autowired
     private RequestContactDAO requestContactDAO;
  
+    // GET: Show Home Page
+    // GET: Hiển thị trang chủ
+    @RequestMapping(value = { "/" }, method = RequestMethod.GET)
+    public ModelAndView homeNone(Model model, HttpServletRequest request) {
+    	return new ModelAndView("redirect:/view/home");
+    }
+    
+    // GET: Show Home Page
+    // GET: Hiển thị trang chủ
+    @RequestMapping(value = { "/view" }, method = RequestMethod.GET)
+    public ModelAndView homeView(Model model, HttpServletRequest request) {
+    	return new ModelAndView("redirect:/view/home");
+    }
+    
+    // GET: Show Home Page
+    // GET: Hiển thị trang chủ
+    @RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+    public ModelAndView homePage(Model model, HttpServletRequest request) {
+    	return new ModelAndView("redirect:/view/home");
+    }
+    
     // GET: Show Home Page
     // GET: Hiển thị trang chủ
     @RequestMapping(value = { "/view/home" }, method = RequestMethod.GET)

@@ -16,13 +16,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
  
    @Autowired
    MyDBAuthenticationService myDBAauthenticationService;
+   
+   private String adminRole = "ADMIN";
+   private String subAdminRole = "SUB_ADMIN";
  
    @Autowired
    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
  
-    
        // Các User trong Database
-       //auth.userDetailsService(myDBAauthenticationService);
+       auth.userDetailsService(myDBAauthenticationService);
  
    }
  
@@ -33,16 +35,38 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	   
        http.csrf().disable();
  
-  
        // Các yêu cầu phải login với vai trò EMPLOYEE hoặc MANAGER.
        // Nếu chưa login, nó sẽ redirect tới trang /login.
-       http.authorizeRequests().antMatchers("/orderList","/order", "/accountInfo")//
-               .access("hasAnyRole('ROLE_EMPLOYEE', 'ROLE_MANAGER')");
+       http.authorizeRequests().antMatchers("/admin/news",
+    		   								"/admin/home",
+    		   								"/admin/productlist",
+    		   								"/admin/newproductpage",
+    		   								"/admin/saveproductinfo",
+    		   								"/admin/deleteproduct",
+    		   								"/admin/editproduct",
+    		   								"/admin/updateproductinfo",
+    		   								"/admin/orderlist",
+    		   								"/admin/news",
+    		   								"/admin/addNews",
+    		   								"/admin/doAddNews",
+    		   								"/admin/orderdetaillist",
+    		   								"/admin/confirmorder",
+    		   								"/admin/contact",
+    		   								"/admin/contact",
+    		   								"/admin/contact-detail",
+    		   								"/admin/contact-reply",
+    		   								"/admin/contact-reply",
+    		   								"/admin/editNews",
+    		   								"/admin/doEditNews",
+    		   								"/admin/deleteNews"
+    		   								)//
+               .access("hasRole('ROLE_SUB_ADMIN') or hasRole('ROLE_ADMIN')");
  
   
        // Trang chỉ dành cho MANAGER
-       http.authorizeRequests().antMatchers("/product").access("hasRole('ROLE_MANAGER')");
- 
+       http.authorizeRequests().antMatchers("/admin/user",
+    		   								"/admin/addnewuser"
+    		   								).access("hasRole('ROLE_ADMIN')");
   
        // Khi người dùng đã login, với vai trò XX.
        // Nhưng truy cập vào trang yêu cầu vai trò YY,
@@ -54,16 +78,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
        http.authorizeRequests().and().formLogin()//
           
                // Submit URL của trang login
-               .loginProcessingUrl("/j_spring_security_check") // Submit URL
+               .loginProcessingUrl("/dologin") // Submit URL
                .loginPage("/login")//
-               .defaultSuccessUrl("/accountInfo")//
+               .defaultSuccessUrl("/admin/home")//
                .failureUrl("/login?error=true")//
                .usernameParameter("userName")//
                .passwordParameter("password")
             
                // Cấu hình cho Logout Page.
                // (Sau khi logout, chuyển tới trang home)
-               .and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
+               .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout=true");
  
    }
 }

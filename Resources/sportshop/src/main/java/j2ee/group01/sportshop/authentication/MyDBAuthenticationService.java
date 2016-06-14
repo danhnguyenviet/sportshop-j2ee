@@ -16,35 +16,39 @@ import j2ee.group01.sportshop.entity.User;
 @Service
 public class MyDBAuthenticationService implements UserDetailsService {
  
-    @Autowired
-    private UserDAO accountDAO;
+	@Autowired
+    private UserDAO userDAO;
  
+    private String adminRole = "ADMIN";
+    private String subAdminRole = "SUB_ADMIN";
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       /* User account = new User();//accountDAO.findAccount(username);
-        System.out.println("Account= " + account);
+    	j2ee.group01.sportshop.entity.User user = userDAO.getUserFromUsername(username);
+        
+        System.out.println("Account= " + user);
  
-        if (account == null) {
-            throw new UsernameNotFoundException("User " //
+        if (user == null) {
+            throw new UsernameNotFoundException("User "
                     + username + " was not found in the database");
         }
  
         // EMPLOYEE,MANAGER,..
-        String role = account.getUserRole();*/
+        String role = "ROLE_"+((user.isIdRole())?adminRole:subAdminRole);
  
-        /*List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
+        List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
  
         // ROLE_EMPLOYEE, ROLE_MANAGER
-        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role);
+        GrantedAuthority authority = new SimpleGrantedAuthority(role);
  
         grantList.add(authority);
  
-        boolean enabled = account.isActive();
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
-        boolean accountNonLocked = true;*/
- 
-        UserDetails userDetails = (UserDetails) new User();
+        boolean accountNonLocked = true;
+        
+        UserDetails userDetails = (UserDetails) new org.springframework.security.core.userdetails.User(user.getUsername(), //
+        		user.getPassword(), true, accountNonExpired, //
+                credentialsNonExpired, accountNonLocked, grantList);
  
         return userDetails;
     }

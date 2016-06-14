@@ -142,44 +142,44 @@
                     <!-- /input-group -->
                 </li>
                 <li>
-                    <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Bảng điều khiển</a>
+                    <a href="../admin/home"><i class="fa fa-dashboard fa-fw"></i> Bảng điều khiển</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-book fa-fw"></i> Sản phẩm <span class="fa arrow"></span></a>
+                    <a href="../admin/productlist"><i class="fa fa-book fa-fw"></i> Sản phẩm <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">Danh sách sản phẩm</a>
+                            <a href="../admin/productlist">Danh sách sản phẩm</a>
                         </li>
                         <li>
-                            <a href="#">Thêm mới sản phẩm</a>
+                            <a href="../admin/newproductpage">Thêm mới sản phẩm</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-book fa-fw"></i> Danh sách đơn hàng</a>
+                    <a href="../admin/orderlist"><i class="fa fa-book fa-fw"></i> Danh sách đơn hàng</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-book fa-fw"></i> Bài viết <span class="fa arrow"></span></a>
+                    <a href="../admin/news"><i class="fa fa-book fa-fw"></i> Bài viết <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level"`>
                         <li>
-                            <a href="#">Danh sách bài viết</a>
+                            <a href="../admin/news">Danh sách bài viết</a>
                         </li>
                         <li>
-                            <a href="#">Thêm mới bài viết</a>
+                            <a href="../admin/addNews">Thêm mới bài viết</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-envelope"></i> Danh sách liên hệ</a>
+                    <a href="../admin/contact"><i class="fa fa-envelope"></i> Danh sách liên hệ</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
+                    <a href="../admin/user"><i class="fa fa-bar-chart-o fa-fw"></i> Người dùng<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="#">Danh sách người dùng</a>
+                            <a href="../admin/user">Danh sách người dùng</a>
                         </li>
                         <li>
-                            <a href="#">Thêm người dùng</a>
+                            <a href="../admin/addnewuser">Thêm người dùng</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -188,7 +188,7 @@
                     <a href="#"><i class="fa fa-glass"></i> Cấu hình</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-user"></i> Đăng xuất</a>
+                    <a href="../logout"><i class="fa fa-user"></i> Đăng xuất</a>
                 </li>
             </ul>
         </div>

@@ -8,12 +8,14 @@ j2ee\group01\sportshop\entity\News.class
 j2ee\group01\sportshop\entity\Contact.class
 j2ee\group01\sportshop\model\Cart.class
 j2ee\group01\sportshop\controller\FrontendController.class
+j2ee\group01\sportshop\model\OrderModel.class
 j2ee\group01\sportshop\controller\BackendController.class
 j2ee\group01\sportshop\model\ProductCart.class
 j2ee\group01\sportshop\model\ContractModel.class
 j2ee\group01\sportshop\config\SpringWebAppInitializer.class
 j2ee\group01\sportshop\config\WebMvcConfig.class
 j2ee\group01\sportshop\dao\ContactDAO.class
+j2ee\group01\sportshop\model\UserModel.class
 j2ee\group01\sportshop\config\WebSecurityConfig.class
 j2ee\group01\sportshop\model\NewsModel.class
 j2ee\group01\sportshop\entity\Category.class
@@ -26,6 +28,7 @@ j2ee\group01\sportshop\model\ProductModel.class
 j2ee\group01\sportshop\config\ApplicationContextConfig.class
 j2ee\group01\sportshop\dao\OrderDAO.class
 j2ee\group01\sportshop\dao\RequestContactDAO.class
+j2ee\group01\sportshop\model\OrderDetailModel.class
 j2ee\group01\sportshop\authentication\MyDBAuthenticationService.class
 j2ee\group01\sportshop\dao\CategoryDAO.class
 j2ee\group01\sportshop\entity\Order.class
